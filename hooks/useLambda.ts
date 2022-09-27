@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getProgress } from "../client/lambda/getProgress";
-import { postMedia } from "../client/lambda/postMedia";
-import { postStill } from "../client/lambda/postStill";
+import { getProgress } from "../lambda/getProgress";
+import { postMedia } from "../lambda/postMedia";
+import { postStill } from "../lambda/postStill";
 
 export const useLambda = (id: string, inputProps: any, refreshInterval = 1000) => {
     const [progress, setProgress] = useState<number>();
