@@ -10,20 +10,21 @@
     "preview": "remotion preview remotion/index.tsx",
     "render": "remotion render remotion/index.tsx ",
     "lambda:site": "npx remotion lambda sites create remotion/index.tsx --site-name=remotion-next-example",
-    "lambda:function": "npx remotion lambda functions deploy"
+    "lambda:function": "npx remotion lambda functions deploy",
+    "lambda:render": "npx remotion lambda render "
   },
   "dependencies": {
-    "@remotion/cli": "3.2.23",
-    "@remotion/eslint-config": "3.2.23",
-    "@remotion/lambda": "^3.2.23",
-    "@remotion/player": "^3.2.23",
+    "@remotion/cli": "3.2.31",
+    "@remotion/eslint-config": "3.2.31",
+    "@remotion/lambda": "3.2.31",
+    "@remotion/player": "3.2.31",
     "axios": "^0.27.2",
     "eslint": "^8.14.0",
     "next": "12.3.1",
     "prettier": "^2.6.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "remotion": "3.2.23"
+    "remotion": "3.2.31"
   },
   "devDependencies": {
     "@types/node": "18.7.23",

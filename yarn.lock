@@ -1360,58 +1360,58 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@remotion/bundler@3.2.23":
-  version "3.2.23"
-  resolved "https://registry.yarnpkg.com/@remotion/bundler/-/bundler-3.2.23.tgz#a3eadc38cc45e20275252f93060d252e3dd49828"
-  integrity sha512-x0V1wzr/wRno+Kg95Vvynn6QeDbQAhe3nFxlgdYB72Xl5UJrkB7ZFKtAX8TeBpN6gukwC5FZlNOWPkvWNMuEYg==
+"@remotion/bundler@3.2.31":
+  version "3.2.31"
+  resolved "https://registry.yarnpkg.com/@remotion/bundler/-/bundler-3.2.31.tgz#6fc3042a870d885ce51c6f97b5dc1efbc86fff8e"
+  integrity sha512-a526itfNplL/b71H+ternrmmi3mW02ZMfxDnLb3HiMo8koF22YiNmubdWi7AhCpA9K71EOHhAxB5TeAWnuatZg==
   dependencies:
     css-loader "5.2.7"
     esbuild "0.14.19"
     react-refresh "0.9.0"
-    remotion "3.2.23"
+    remotion "3.2.31"
     style-loader "2.0.0"
-    webpack "5.72.0"
+    webpack "5.74.0"
 
-"@remotion/cli@3.2.23":
-  version "3.2.23"
-  resolved "https://registry.yarnpkg.com/@remotion/cli/-/cli-3.2.23.tgz#6a68263ff58ae041981243516e2dcc123731cd72"
-  integrity sha512-6e2GepZe+BT9IiDbTm47Z9OoPZ50mBD3GXgWvQFo+99pZYgErMfOl8rLw9hsNS3coIvuxy/MBUZoUP1tEGzQhw==
+"@remotion/cli@3.2.31":
+  version "3.2.31"
+  resolved "https://registry.yarnpkg.com/@remotion/cli/-/cli-3.2.31.tgz#b75630296c6b3e5a35f7606c0442e194f3d358c7"
+  integrity sha512-viIfX4mwa0MKy6S5WTpSmkw/F35eHZde5qfQ65n7Tho7SAzIMKH23ynjNVLz8iHxNPlrDbqz0pG0XjSTBAOmDA==
   dependencies:
-    "@remotion/bundler" "3.2.23"
-    "@remotion/media-utils" "3.2.23"
-    "@remotion/player" "3.2.23"
-    "@remotion/renderer" "3.2.23"
+    "@remotion/bundler" "3.2.31"
+    "@remotion/media-utils" "3.2.31"
+    "@remotion/player" "3.2.31"
+    "@remotion/renderer" "3.2.31"
     better-opn "2.1.1"
     dotenv "9.0.2"
     memfs "3.4.3"
     minimist "1.2.6"
-    remotion "3.2.23"
+    remotion "3.2.31"
     semver "7.3.5"
     source-map "0.6.1"
 
-"@remotion/eslint-config@3.2.23":
-  version "3.2.23"
-  resolved "https://registry.yarnpkg.com/@remotion/eslint-config/-/eslint-config-3.2.23.tgz#83d51adfaf73e9c83b41256e72c78d616c19345f"
-  integrity sha512-3JXJswwEzIldyO2BE7aNl5SxNizKm4B+1hjqrHkEjpUmOU9yd2FIsUEgHMCfeKx5FtK0VDRCZzNzRJ2PyFu4WQ==
+"@remotion/eslint-config@3.2.31":
+  version "3.2.31"
+  resolved "https://registry.yarnpkg.com/@remotion/eslint-config/-/eslint-config-3.2.31.tgz#eb15006e4e91b7f5325f99fc002bc82767a6f343"
+  integrity sha512-4dxXvM8tYuwaQz8r4wiVKz3pg2wItUUOnWeOiWA0hzxybTZFnQ0wzTly39JNvNN9wk/dMNuyZEDtwBsGw5eaYg==
   dependencies:
-    "@remotion/eslint-plugin" "3.2.23"
+    "@remotion/eslint-plugin" "3.2.31"
     "@typescript-eslint/eslint-plugin" "5.19.0"
     "@typescript-eslint/parser" "5.19.0"
     eslint-plugin-10x "1.5.2"
     eslint-plugin-react "7.29.4"
     eslint-plugin-react-hooks "4.4.0"
 
-"@remotion/eslint-plugin@3.2.23":
-  version "3.2.23"
-  resolved "https://registry.yarnpkg.com/@remotion/eslint-plugin/-/eslint-plugin-3.2.23.tgz#b402c932297b2738b395b6b43c1028e88b450f84"
-  integrity sha512-nPZyx4McBeva5KC3Pu0qxSg8nzuYqayt2x/kXlfzy/rVP5uCrFZ8W8yhS68UOKmaroE1QrOjXKOkKXp2p1QG6w==
+"@remotion/eslint-plugin@3.2.31":
+  version "3.2.31"
+  resolved "https://registry.yarnpkg.com/@remotion/eslint-plugin/-/eslint-plugin-3.2.31.tgz#172a06ab862813c5235fb2f80f4cc99905813646"
+  integrity sha512-gOFawQ/sgMeGbGwSnlbH/V7QuWiJaYAEk+cJLM2hk/mEALLnVempT6bz2W0IxwudNKJuPcDSg4bU9B/Cr2/tFA==
   dependencies:
     "@typescript-eslint/utils" "5.19.0"
 
-"@remotion/lambda@^3.2.23":
-  version "3.2.23"
-  resolved "https://registry.yarnpkg.com/@remotion/lambda/-/lambda-3.2.23.tgz#c407ebc3a1b0cfa2302020a61dbcfc74fe9126a4"
-  integrity sha512-76YXei9PgTM7eI510Oy02JMDqb7e5BIgZM3UwUBRPtlGbJ4+Boc2ThDstIrHfCriT0vsWuvwPJEfRjb60aX0Pg==
+"@remotion/lambda@3.2.31":
+  version "3.2.31"
+  resolved "https://registry.yarnpkg.com/@remotion/lambda/-/lambda-3.2.31.tgz#795eceb35754bbd213359ecc9584147c51c9b6ac"
+  integrity sha512-ouH+utU49IxAvZn5XO6ajSE5tR/yxOpghPtlfRXeD4e8+54uwkVBz1ziHr1IAGkZiFLE6MVnOgjrpOGnu7zyvw==
   dependencies:
     "@aws-sdk/abort-controller" "3.55.0"
     "@aws-sdk/client-cloudwatch-logs" "3.58.0"
@@ -1421,35 +1421,35 @@
     "@aws-sdk/client-service-quotas" "3.58.0"
     "@aws-sdk/lib-storage" "3.58.0"
     "@aws-sdk/s3-request-presigner" "3.58.0"
-    "@remotion/bundler" "3.2.23"
-    "@remotion/cli" "3.2.23"
-    "@remotion/renderer" "3.2.23"
+    "@remotion/bundler" "3.2.31"
+    "@remotion/cli" "3.2.31"
+    "@remotion/renderer" "3.2.31"
     aws-policies "^1.0.1"
     mime-types "2.1.34"
-    remotion "3.2.23"
+    remotion "3.2.31"
 
-"@remotion/media-utils@3.2.23":
-  version "3.2.23"
-  resolved "https://registry.yarnpkg.com/@remotion/media-utils/-/media-utils-3.2.23.tgz#c4e5e094ec9a1ccbf1321d6c55005d92093a82d1"
-  integrity sha512-AJYZifyzUC22PCnjRCLmO2Rn5nc8aomILaQk1LFmDjBl9OTao6tWBP6ON6h2KIIE5j6OD1CyVAkCZeBemdUXLQ==
+"@remotion/media-utils@3.2.31":
+  version "3.2.31"
+  resolved "https://registry.yarnpkg.com/@remotion/media-utils/-/media-utils-3.2.31.tgz#a19c1e184ffec630fb63ebbc0024dc2aaa868030"
+  integrity sha512-N4opt8bOtiTrPHsDcfCiv29/uDvNZ1rsXDOcpsIgpn431TZfhdeYJ+aNzj/DnPwfN4EBOM8pz731gfjg5/bV1g==
   dependencies:
-    remotion "3.2.23"
+    remotion "3.2.31"
 
-"@remotion/player@3.2.23", "@remotion/player@^3.2.23":
-  version "3.2.23"
-  resolved "https://registry.yarnpkg.com/@remotion/player/-/player-3.2.23.tgz#1a308f81c5f3a65e54927e57638f99480d85c2a4"
-  integrity sha512-x9OVm/BkvEjdL8m0MAk52Sn1ssQQcUckKdLoXqrCE+S8NFscHiFIYtlaRQszL3s8F59778BdLZ2kl306LowgOA==
+"@remotion/player@3.2.31":
+  version "3.2.31"
+  resolved "https://registry.yarnpkg.com/@remotion/player/-/player-3.2.31.tgz#7660f9e35cc77e49d2bb09731e58355dd7ce8bcc"
+  integrity sha512-8ljsx+qcKjO58P+b3KdUpnYd049GxTWoejeVbw0MUYh0wmxeEi8m8gTyoG4IclEJsof4btewdyEutMr52q7L8w==
   dependencies:
-    remotion "3.2.23"
+    remotion "3.2.31"
 
-"@remotion/renderer@3.2.23":
-  version "3.2.23"
-  resolved "https://registry.yarnpkg.com/@remotion/renderer/-/renderer-3.2.23.tgz#d4b4367a1bd53dc3103c9020ed3ed71a0ecc9efe"
-  integrity sha512-rAJp/2EUpJBK+nh0yy67bw9iUNMtJYgUL71i/ouz8ZsXJBrt8/rooF/wpd+xOCjuNm3lTsTw3iNy7M3ZJLerbw==
+"@remotion/renderer@3.2.31":
+  version "3.2.31"
+  resolved "https://registry.yarnpkg.com/@remotion/renderer/-/renderer-3.2.31.tgz#b2bad403e2387ddfad39f3962b5f4caa2accc59b"
+  integrity sha512-IKBOvVMArVeSdCZhsCzEJjOkEixKtlyIZOrKKIFrsLxJGlPeDEXY52VrHNwbIacvqrKZUOZ+HFgBIHsyNv0w2g==
   dependencies:
     execa "5.1.1"
     extract-zip "2.0.1"
-    remotion "3.2.23"
+    remotion "3.2.31"
     source-map "^0.8.0-beta.0"
     ws "8.7.0"
 
@@ -1833,7 +1833,7 @@ acorn@^7.0.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
-acorn@^8.4.1, acorn@^8.5.0, acorn@^8.7.1, acorn@^8.8.0:
+acorn@^8.5.0, acorn@^8.7.1, acorn@^8.8.0:
   version "8.8.0"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.0.tgz#88c0187620435c7f6015803f5539dae05a9dbea8"
   integrity sha512-QOxyigPVrpZ2GXT+PFyZTl6TtOFc5egxHIP9IlQ+RbupQuX4RkT/Bee4/kQuC02Xkzg84JcT7oLYtDIQxp+v7w==
@@ -2360,7 +2360,7 @@ end-of-stream@^1.1.0:
   dependencies:
     once "^1.4.0"
 
-enhanced-resolve@^5.10.0, enhanced-resolve@^5.9.2:
+enhanced-resolve@^5.10.0:
   version "5.10.0"
   resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.10.0.tgz#0dc579c3bb2a1032e357ac45b8f3a6f3ad4fb1e6"
   integrity sha512-T0yTFjdpldGY8PmuXXR0PyQ1ufZpEGiHVrp7zHKB7jdR4qlmZHhONVM5AQOAWXuF/w3dnHbEQVrNptJgt7F+cQ==
@@ -3338,11 +3338,6 @@ js-yaml@^4.1.0:
   dependencies:
     argparse "^2.0.1"
 
-json-parse-better-errors@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/json-parse-better-errors/-/json-parse-better-errors-1.0.2.tgz#bb867cfb3450e69107c131d1c514bab3dc8bcaa9"
-  integrity sha512-mrqyZKfX5EhL7hvqcV6WG1yYjnjeuYDzDhhcAAUrq8Po85NBQBJP+ZDUT75qZQ98IkUoBqdkExkukOU7Ts2wrw==
-
 json-parse-even-better-errors@^2.3.0, json-parse-even-better-errors@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/json-parse-even-better-errors/-/json-parse-even-better-errors-2.3.1.tgz#7c47805a94319928e05777405dc12e1f7a4ee02d"
@@ -4232,10 +4227,10 @@ regexpp@^3.2.0:
   resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-3.2.0.tgz#0425a2768d8f23bad70ca4b90461fa2f1213e1b2"
   integrity sha512-pq2bWo9mVD43nbts2wGv17XLiNLya+GklZ8kaDLV2Z08gDCsGpnKn9BFMepvWuHCbyVvY7J5o5+BVvoQbmlJLg==
 
-remotion@3.2.23:
-  version "3.2.23"
-  resolved "https://registry.yarnpkg.com/remotion/-/remotion-3.2.23.tgz#f852b83fc89171a352feaa1cdf7c40812140b3f8"
-  integrity sha512-ByJdEkvUnJPgg3puuzhz6R4yJIjrk8ui9dAYqedc6G0YwSrHrVItb/CT+0iz7PfszVrVNRmWe1EFoFOkMLFjgA==
+remotion@3.2.31:
+  version "3.2.31"
+  resolved "https://registry.yarnpkg.com/remotion/-/remotion-3.2.31.tgz#15261c5cd27651700e927860d32cbc5d8c083f47"
+  integrity sha512-BcHpqUE+uSK3T8e9+ugUNgngOtB63cVMuaZ/db64B2I+v5jsUkY7s9IZ2qG38/8oeYbiihDhpjUxXS75jJ5roA==
 
 resolve-from@^4.0.0:
   version "4.0.0"
@@ -4661,7 +4656,7 @@ uuid@^8.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
-watchpack@^2.3.1, watchpack@^2.4.0:
+watchpack@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/watchpack/-/watchpack-2.4.0.tgz#fa33032374962c78113f93c7f2fb4c54c9862a5d"
   integrity sha512-Lcvm7MGST/4fup+ifyKi2hjyIAwcdI4HRgtvTpIUxBRhB+RFtUh8XtDOxUfctVCnhVi+QQj49i91OyvzkJl6cg==
@@ -4679,37 +4674,7 @@ webpack-sources@^3.2.3:
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-3.2.3.tgz#2d4daab8451fd4b240cc27055ff6a0c2ccea0cde"
   integrity sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==
 
-webpack@5.72.0:
-  version "5.72.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.72.0.tgz#f8bc40d9c6bb489a4b7a8a685101d6022b8b6e28"
-  integrity sha512-qmSmbspI0Qo5ld49htys8GY9XhS9CGqFoHTsOVAnjBdg0Zn79y135R+k4IR4rKK6+eKaabMhJwiVB7xw0SJu5w==
-  dependencies:
-    "@types/eslint-scope" "^3.7.3"
-    "@types/estree" "^0.0.51"
-    "@webassemblyjs/ast" "1.11.1"
-    "@webassemblyjs/wasm-edit" "1.11.1"
-    "@webassemblyjs/wasm-parser" "1.11.1"
-    acorn "^8.4.1"
-    acorn-import-assertions "^1.7.6"
-    browserslist "^4.14.5"
-    chrome-trace-event "^1.0.2"
-    enhanced-resolve "^5.9.2"
-    es-module-lexer "^0.9.0"
-    eslint-scope "5.1.1"
-    events "^3.2.0"
-    glob-to-regexp "^0.4.1"
-    graceful-fs "^4.2.9"
-    json-parse-better-errors "^1.0.2"
-    loader-runner "^4.2.0"
-    mime-types "^2.1.27"
-    neo-async "^2.6.2"
-    schema-utils "^3.1.0"
-    tapable "^2.1.1"
-    terser-webpack-plugin "^5.1.3"
-    watchpack "^2.3.1"
-    webpack-sources "^3.2.3"
-
-webpack@^5.72.0:
+webpack@5.74.0, webpack@^5.72.0:
   version "5.74.0"
   resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.74.0.tgz#02a5dac19a17e0bb47093f2be67c695102a55980"
   integrity sha512-A2InDwnhhGN4LYctJj6M1JEaGL7Luj6LOmyBHjcI8529cm5p6VXiTIW2sn6ffvEAKmveLzvu4jrihwXtPojlAA==

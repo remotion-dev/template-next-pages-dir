@@ -22,7 +22,7 @@ Change the lambda site name in `package.json` `scripts.lambda:site` to your site
 
 ` yarn render <YOUR COMPOSITION>` - Renders a composition
 
-`yarn lambda:site` - Deploys new site to AWS
+`yarn lambda:site` - Deploys new site to AWS (you have to do that every time you change the Root file or composition)
 
 `yarn lambda:function` - Deploys new lambda function to AWS (you will need to update your env file with new function name)
 
