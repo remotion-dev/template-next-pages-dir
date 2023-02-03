@@ -1,17 +1,23 @@
 import { AbsoluteFill } from "remotion";
 import { MyCompProps } from "../../types/MyComp";
-import { Logo } from "./Logo";
-import { Subtitle } from "./Subtitle";
+import { NextLogo } from "./NextLogo";
+import { RemotionLogo } from "./RemotionLogo";
 import { Title } from "./Title";
 
-export const MyComposition = ({ title, subtitle, backgroundColor }: MyCompProps) => {
+export const MyComposition = ({
+  title,
+  subtitle,
+  backgroundColor,
+}: MyCompProps) => {
   return (
-    <AbsoluteFill className="bg-gray-100 items-center justify-center" style={{ backgroundColor }}>
+    <AbsoluteFill className="bg-white items-center justify-center">
+      <div className="row flex items-center justify-conter">
+        <NextLogo></NextLogo>
+        <div style={{ width: 400 }}></div>
+        <RemotionLogo></RemotionLogo>
+      </div>
       <div className="m-10" />
-      <Logo />
-      <div className="m-3" />
       <Title title={title} />
-      <Subtitle subtitle={subtitle} />
     </AbsoluteFill>
   );
 };

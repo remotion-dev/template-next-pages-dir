@@ -9,7 +9,7 @@ export const Title = ({ title }: { title: string }) => {
     extrapolateRight: "clamp",
   });
   return (
-    <div style={{ opacity }} className="text-gray-700 text-5xl font-bold leading-relaxed">
+    <div style={{ opacity }} className=" text-5xl font-bold leading-relaxed">
       {title}
     </div>
   );

@@ -21,25 +21,28 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="max-w-screen-md m-auto mb-20">
-        <Player
-          component={MyComposition}
-          inputProps={props}
-          durationInFrames={120}
-          fps={30}
-          compositionHeight={1080}
-          compositionWidth={1920}
-          style={{
-            width: "100%",
-            borderRadius: 6,
-            boxShadow: "0 0 200px rgba(0, 0, 0, 0.15)",
-            marginBottom: 40,
-            marginTop: 60,
-          }}
-          controls
-          autoPlay
-          loop
-        />
-        <div className="grid grid-cols-2">
+        <div className="cinematics" style={{}}>
+          <Player
+            component={MyComposition}
+            inputProps={props}
+            durationInFrames={120}
+            fps={30}
+            compositionHeight={720}
+            compositionWidth={1280}
+            style={{
+              width: "100%",
+              boxShadow: "0 0 200px rgba(0, 0, 0, 0.15)",
+              marginBottom: 40,
+              marginTop: 60,
+              borderRadius: 6,
+              overflow: "hidden",
+            }}
+            controls
+            autoPlay
+            loop
+          />
+        </div>
+        <div className="grid grid-cols-2" style={{}}>
           <div
             style={{
               border: "1px solid #eaeaea",
@@ -62,7 +65,7 @@ const Home: NextPage = () => {
               onChange={(e) => setText(e.currentTarget.value)}
             />
           </div>
-          <div className=" flex flex-col items-center">
+          <div className="flex flex-col items-center">
             <button
               onClick={renderMedia}
               disabled={state.status === "rendering"}
@@ -72,17 +75,6 @@ const Home: NextPage = () => {
             </button>
             {state.status && (
               <div className="w-full items-center flex flex-col">
-                <p
-                  className={`uppercase text-xl font-bold  ${
-                    state.status === "done"
-                      ? "text-green-500"
-                      : state.status === "error"
-                      ? "text-red-500"
-                      : "text-blue-500"
-                  }`}
-                >
-                  {state.status}
-                </p>
                 {state.status === "rendering" ? (
                   <div className="h-8 w-full bg-gray-500 rounded-full overflow-hidden relative">
                     <div
