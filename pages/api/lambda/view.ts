@@ -1,7 +1,12 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { AwsRegion, getRenderProgress, RenderProgress } from "@remotion/lambda";
+import {
+  AwsRegion,
+  getOrCreateBucket,
+  getRenderProgress,
+  RenderProgress,
+} from "@remotion/lambda";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { bucketName, config } from "../../../config";
+import { config } from "../../../config";
 
 export default async function progress(
   req: NextApiRequest,
@@ -11,9 +16,13 @@ export default async function progress(
     return res.status(405).end();
   }
 
+  const { bucketName } = await getOrCreateBucket({
+    region: config.region as AwsRegion,
+  });
+
   // TODO: validate
   const result = await getRenderProgress({
-    bucketName: bucketName as string,
+    bucketName: bucketName,
     functionName: config.functionName as string,
     region: config.region as AwsRegion,
     renderId: req.query.id as string,
