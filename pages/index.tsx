@@ -28,24 +28,45 @@ const Home: NextPage = () => {
           fps={30}
           compositionHeight={1080}
           compositionWidth={1920}
-          style={{ width: "100%" }}
+          style={{
+            width: "100%",
+            borderRadius: 6,
+            boxShadow: "0 0 200px rgba(0, 0, 0, 0.15)",
+            marginBottom: 40,
+            marginTop: 60,
+          }}
           controls
           autoPlay
           loop
         />
-        <div className="grid grid-cols-2 h-60">
-          <textarea
-            name="props"
-            id=""
-            className=" w-full bg-gray-300"
-            value={text}
-            onChange={(e) => setText(e.currentTarget.value)}
-          />
+        <div className="grid grid-cols-2">
+          <div
+            style={{
+              border: "1px solid #eaeaea",
+              padding: 24,
+              borderRadius: 6,
+            }}
+          >
+            <textarea
+              name="props"
+              style={{
+                border: "1px solid #eaeaea",
+                resize: "none",
+                lineHeight: 1.7,
+                width: "100%",
+                padding: "7px 10px",
+                height: "100%",
+                borderRadius: 6,
+              }}
+              value={text}
+              onChange={(e) => setText(e.currentTarget.value)}
+            />
+          </div>
           <div className=" flex flex-col items-center">
             <button
               onClick={renderMedia}
               disabled={state.status === "rendering"}
-              className="rounded-lg bg-blue-400 text-white uppercase px-4 py-2 m-2 disabled:bg-gray-400"
+              className="rounded-lg bg-black text-white  px-4 py-2 m-2 disabled:bg-gray-400"
             >
               Render
             </button>
