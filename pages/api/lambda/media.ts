@@ -1,5 +1,4 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { RenderMediaOnLambdaOutput } from "@remotion/lambda";
+import { AwsRegion, RenderMediaOnLambdaOutput } from "@remotion/lambda";
 import { renderMediaOnLambda } from "@remotion/lambda/client";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { config } from "../../../config";
@@ -12,10 +11,15 @@ export default async function media(
     return res.status(405).end();
   }
 
+  // TODO: validate
   const result = await renderMediaOnLambda({
-    ...config,
+    codec: "h264",
+    functionName: config.functionName as string,
+    region: config.region as AwsRegion,
+    serveUrl: config.serveUrl as string,
     composition: req.body.id,
     inputProps: req.body.inputProps,
   });
+
   res.status(200).json(result);
 }

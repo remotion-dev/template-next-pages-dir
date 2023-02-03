@@ -1,16 +1,23 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { getRenderProgress, RenderProgress } from '@remotion/lambda'
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { config } from '../../../config'
+import { AwsRegion, getRenderProgress, RenderProgress } from "@remotion/lambda";
+import type { NextApiRequest, NextApiResponse } from "next";
+import { config } from "../../../config";
 
 export default async function progress(
   req: NextApiRequest,
   res: NextApiResponse<RenderProgress>
 ) {
-  if (req.method !== 'GET') return res.status(405).end()
+  if (req.method !== "GET") {
+    return res.status(405).end();
+  }
+
+  // TODO: Validate
   const result = await getRenderProgress({
-    ...config,
+    bucketName: config.bucketName as string,
+    functionName: config.functionName as string,
+    region: config.region as AwsRegion,
     renderId: req.query.id as string,
-  })
-  res.status(200).json(result)
+  });
+
+  res.status(200).json(result);
 }

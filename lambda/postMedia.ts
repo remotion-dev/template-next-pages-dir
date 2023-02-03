@@ -8,7 +8,7 @@ export const postMedia = async (
     method: "post",
     body: JSON.stringify({ id, inputProps }),
     headers: {
-      contentType: "application/json",
+      "content-type": "application/json",
     },
   });
 
