@@ -1,22 +1,18 @@
 import { Player } from "@remotion/player";
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import { useLambda } from "../hooks/useLambda";
 import { MyComposition } from "../remotion/MyComp/Composition";
 import { defaultMyCompProps } from "../types/MyComp";
 
 const Home: NextPage = () => {
-  const [props, setProps] = useState(defaultMyCompProps);
-  const [text, setText] = useState(JSON.stringify(props, null, 2));
+  const [text, setText] = useState(JSON.stringify(defaultMyCompProps, null, 2));
 
-  useEffect(() => {
-    setProps(JSON.parse(text));
-  }, [text]);
-  const { renderMedia, progress, status, price, url, renderId } = useLambda(
-    "MyComp",
-    props
-  );
+  const props = useMemo(() => JSON.parse(text), [text]);
+
+  const { renderMedia, state } = useLambda("MyComp", props);
+
   return (
     <div>
       <Head>
@@ -48,41 +44,48 @@ const Home: NextPage = () => {
           <div className=" flex flex-col items-center">
             <button
               onClick={renderMedia}
-              disabled={status === "rendering"}
+              disabled={state.status === "rendering"}
               className="rounded-lg bg-blue-400 text-white uppercase px-4 py-2 m-2 disabled:bg-gray-400"
             >
               Render
             </button>
-            {status && (
+            {state.status && (
               <div className="w-full items-center flex flex-col">
                 <p
                   className={`uppercase text-xl font-bold  ${
-                    status === "done"
+                    state.status === "done"
                       ? "text-green-500"
-                      : status === "error"
+                      : state.status === "error"
                       ? "text-red-500"
                       : "text-blue-500"
                   }`}
                 >
-                  {status}
+                  {state.status}
                 </p>
-                <div className="h-8 w-full bg-gray-500 rounded-full overflow-hidden relative">
-                  <div
-                    className="h-full left-0 top-0 bg-green-400"
-                    style={{ width: `${(progress ?? 0) * 100}%` }}
-                  ></div>
-                </div>
-                <p>Price: {price}</p>
-                {status !== "rendering" && (
+                {state.status === "rendering" ? (
+                  <div className="h-8 w-full bg-gray-500 rounded-full overflow-hidden relative">
+                    <div
+                      className="h-full left-0 top-0 bg-green-400"
+                      style={{ width: `${(state.progress ?? 0) * 100}%` }}
+                    ></div>
+                  </div>
+                ) : null}
+                {state.status === "done" ? <p>Price: {state.price}</p> : null}
+                {state.status === "done" && (
                   <div className="text-green-500 space-x-4 uppercase">
-                    <a href={url} target="_blank" rel="noreferrer" className="">
+                    <a
+                      href={state.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className=""
+                    >
                       Open
                     </a>
                     <a
-                      href={url}
+                      href={state.url}
                       target="_blank"
                       rel="noreferrer"
-                      download={renderId}
+                      download={state.renderId}
                     >
                       Download
                     </a>
