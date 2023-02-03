@@ -13,7 +13,10 @@ const Home: NextPage = () => {
   useEffect(() => {
     setProps(JSON.parse(text));
   }, [text]);
-  const { renderMedia, progress, status, price, url, renderId } = useLambda("MyComp", props);
+  const { renderMedia, progress, status, price, url, renderId } = useLambda(
+    "MyComp",
+    props
+  );
   return (
     <div>
       <Head>
@@ -75,7 +78,12 @@ const Home: NextPage = () => {
                     <a href={url} target="_blank" rel="noreferrer" className="">
                       Open
                     </a>
-                    <a href={url} target="_blank" rel="noreferrer" download={renderId}>
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noreferrer"
+                      download={renderId}
+                    >
                       Download
                     </a>
                   </div>
