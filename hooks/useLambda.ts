@@ -36,7 +36,7 @@ export const useLambda = (
     status: "init",
   });
 
-  const init = (type: "still" | "media") => {
+  const init = () => {
     setState({
       status: "init",
     });
@@ -48,7 +48,7 @@ export const useLambda = (
     if (state.status === "rendering") {
       return alert("Already rendering");
     }
-    init("still");
+    init();
 
     try {
       const result = await postStill(id, inputProps);
@@ -72,7 +72,7 @@ export const useLambda = (
 
   const renderMedia = useCallback(async () => {
     if (state.status === "rendering") return alert("Already rendering");
-    init("media");
+    init();
     try {
       const result = await postMedia(id, inputProps);
 
