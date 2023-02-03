@@ -49,47 +49,57 @@ export const useLambda = (
       return alert("Already rendering");
     }
     init("still");
-    const result = await postStill(id, inputProps);
-    if (!result) {
-      return setState((s) => ({
+
+    try {
+      const result = await postStill(id, inputProps);
+
+      setState({
+        status: "done",
+        type: "still",
+        price: result.estimatedPrice.accruedSoFar,
+        renderId: result.renderId,
+        url: getUrl(result.renderId),
+      });
+    } catch (err) {
+      setState({
         status: "error",
+        error: err as Error,
         renderId: null,
         type: "still",
-        // TODO: When catching
-        error: new Error("Failed to render"),
-      }));
+      });
     }
-
-    setState({
-      status: "done",
-      type: "still",
-      price: result.estimatedPrice.accruedSoFar,
-      renderId: result.renderId,
-      url: getUrl(result.renderId),
-    });
   }, [id, inputProps, state.status]);
 
   const renderMedia = useCallback(async () => {
     if (state.status === "rendering") return alert("Already rendering");
     init("media");
-    const result = await postMedia(id, inputProps);
+    try {
+      const result = await postMedia(id, inputProps);
 
-    if (!result) {
-      return setState((s) => {
-        return {
-          error: new Error("failed to render"),
-          status: "error",
-          renderId: null,
-          type: "media",
-        };
+      if (!result) {
+        return setState((s) => {
+          return {
+            error: new Error("failed to render"),
+            status: "error",
+            renderId: null,
+            type: "media",
+          };
+        });
+      }
+      setState({
+        status: "rendering",
+        progress: 0,
+        renderId: result.renderId,
+        type: "media",
+      });
+    } catch (err) {
+      setState({
+        status: "error",
+        error: err as Error,
+        renderId: null,
+        type: "media",
       });
     }
-    setState({
-      status: "rendering",
-      progress: 0,
-      renderId: result.renderId,
-      type: "media",
-    });
   }, [id, inputProps, state.status]);
 
   useEffect(() => {
@@ -101,21 +111,15 @@ export const useLambda = (
       const interval = setInterval(async () => {
         try {
           const result = await getProgress(state.renderId);
-          if (!result) {
-            return setState((s) => ({
-              status: "error",
-              error: new Error("Failed to get progress"),
-              renderId: state.renderId,
-              type: "media",
-            }));
-          }
-          if (result.fatalErrorEncountered)
+          if (result.fatalErrorEncountered) {
             setState((s) => ({
               status: "error",
               renderId: state.renderId,
               type: "media",
               error: new Error(result.errors[0].message as string),
             }));
+            return;
+          }
           setState((s) => ({
             ...s,
             price: result.costs.accruedSoFar,
