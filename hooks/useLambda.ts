@@ -76,16 +76,6 @@ export const useLambda = (
     try {
       const result = await postMedia(id, inputProps);
 
-      if (!result) {
-        return setState((s) => {
-          return {
-            error: new Error("failed to render"),
-            status: "error",
-            renderId: null,
-            type: "media",
-          };
-        });
-      }
       setState({
         status: "rendering",
         progress: 0,

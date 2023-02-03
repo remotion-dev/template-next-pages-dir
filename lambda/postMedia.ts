@@ -1,10 +1,17 @@
 import { RenderMediaOnLambdaOutput } from "@remotion/lambda";
-import axios from "axios";
 
 export const postMedia = async (
   id: string,
-  inputProps: any
-): Promise<RenderMediaOnLambdaOutput | null> => {
-  const result = await axios.post(`/api/lambda/media`, { id, inputProps });
-  return result.data;
+  inputProps: unknown
+): Promise<RenderMediaOnLambdaOutput> => {
+  const result = await fetch(`/api/lambda/media`, {
+    method: "post",
+    body: JSON.stringify({ id, inputProps }),
+    headers: {
+      contentType: "application/json",
+    },
+  });
+
+  const json = await result.json();
+  return json;
 };

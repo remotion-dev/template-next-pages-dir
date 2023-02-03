@@ -1,10 +1,18 @@
 import { RenderStillOnLambdaOutput } from "@remotion/lambda";
-import axios from "axios";
 
 export const postStill = async (
   id: string,
-  inputProps: any
+  inputProps: unknown
 ): Promise<RenderStillOnLambdaOutput> => {
-  const result = await axios.post(`/api/lambda/still`, { id, inputProps });
-  return result.data;
+  const result = await fetch(`/api/lambda/still`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({ id, inputProps }),
+  });
+
+  const json = await result.json();
+
+  return json;
 };
