@@ -4,14 +4,12 @@ import { config, speculateFunctionName } from "../../../config";
 import { executeApi } from "../../../helpers/api-response";
 import { RenderRequest } from "../../../types/schema";
 
-const render = executeApi<RenderMediaOnLambdaOutput>(
+const render = executeApi<RenderMediaOnLambdaOutput, typeof RenderRequest>(
   RenderRequest,
-  async (req) => {
+  async (req, body) => {
     if (req.method !== "POST") {
       throw new Error("Only POST requests are allowed");
     }
-
-    const body = RenderRequest.parse(req.body);
 
     const result = await renderMediaOnLambda({
       codec: "h264",

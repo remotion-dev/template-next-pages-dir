@@ -1,9 +1,4 @@
-import {
-  AwsRegion,
-  getOrCreateBucket,
-  getRenderProgress,
-  RenderProgress,
-} from "@remotion/lambda";
+import { AwsRegion, getRenderProgress, RenderProgress } from "@remotion/lambda";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { config, speculateFunctionName } from "../../../config";
 
@@ -15,13 +10,9 @@ export default async function progress(
     return res.status(405).end();
   }
 
-  const { bucketName } = await getOrCreateBucket({
-    region: config.region as AwsRegion,
-  });
-
   // TODO: Validate
   const result = await getRenderProgress({
-    bucketName,
+    bucketName: req.query.bucketName as string,
     functionName: speculateFunctionName(),
     region: config.region as AwsRegion,
     renderId: req.query.id as string,
