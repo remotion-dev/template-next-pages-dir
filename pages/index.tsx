@@ -69,12 +69,13 @@ const Home: NextPage = () => {
           <InputContainer>
             <Input setText={setText} text={text}></Input>
             <Spacing></Spacing>
-            <Button
-              onClick={renderMedia}
-              disabled={state.status === "rendering"}
-            >
-              Render video
-            </Button>
+            {state.status === "invoking" ? (
+              <Button loading onClick={renderMedia} disabled>
+                Rendering video
+              </Button>
+            ) : (
+              <Button onClick={renderMedia}>Render video</Button>
+            )}
           </InputContainer>
           <div style={lower}>
             <RenderStatus state={state} />

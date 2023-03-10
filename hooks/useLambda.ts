@@ -8,14 +8,17 @@ export type State =
       status: "init";
     }
   | {
-      renderId: string | null;
-      status: "error";
-      error: Error;
+      status: "invoking";
     }
   | {
       renderId: string;
       progress: number;
       status: "rendering";
+    }
+  | {
+      renderId: string | null;
+      status: "error";
+      error: Error;
     }
   | {
       renderId: string;
@@ -33,17 +36,10 @@ export const useLambda = (
     status: "init",
   });
 
-  const init = () => {
-    setState({
-      status: "init",
-    });
-  };
-
-  const getUrl = (id: string) => `/api/lambda/view?id=${id}`;
-
   const renderMedia = useCallback(async () => {
-    if (state.status === "rendering") return alert("Already rendering");
-    init();
+    setState({
+      status: "invoking",
+    });
     try {
       const result = await postMedia(id, inputProps);
 
@@ -59,7 +55,7 @@ export const useLambda = (
         renderId: null,
       });
     }
-  }, [id, inputProps, state.status]);
+  }, [id, inputProps]);
 
   useEffect(() => {
     if (state.status === "rendering" && state.renderId) {
@@ -67,12 +63,11 @@ export const useLambda = (
         try {
           const result = await getProgress(state.renderId);
           if (result.fatalErrorEncountered) {
-            setState((s) => ({
+            setState({
               status: "error",
               renderId: state.renderId,
-              type: "media",
               error: new Error(result.errors[0].message as string),
-            }));
+            });
             return;
           }
           setState((s) => ({
@@ -80,13 +75,12 @@ export const useLambda = (
             price: result.costs.accruedSoFar,
           }));
           if (result.done)
-            setState((s) => ({
+            setState({
               renderId: result.renderId,
               price: result.costs.accruedSoFar,
               status: "done",
-              type: "media",
-              url: getUrl(result.renderId),
-            }));
+              url: `/api/lambda/view?id=${id}`,
+            });
           setState((s) => ({
             ...s,
             progress: s.status === "rendering" ? result.overallProgress : 1,
@@ -97,7 +91,6 @@ export const useLambda = (
             return {
               error: e as Error,
               renderId: state.renderId,
-              type: "media",
               status: "error",
             };
           });
