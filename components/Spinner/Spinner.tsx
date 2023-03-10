@@ -38,7 +38,7 @@ export const Spinner: React.FC<{
             }}
             key={index}
             d={translated}
-            fill="var(--unfocused-border-color)"
+            fill="var(--foreground)"
           ></path>
         );
       })}
