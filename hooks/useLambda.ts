@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { getProgress } from "../lambda/getProgress";
 import { postMedia } from "../lambda/postMedia";
-import { postStill } from "../lambda/postStill";
 import { MyCompProps } from "../types/constants";
 
 export type State =
@@ -11,18 +10,15 @@ export type State =
   | {
       renderId: string | null;
       status: "error";
-      type: "still" | "media";
       error: Error;
     }
   | {
       renderId: string;
       progress: number;
       status: "rendering";
-      type: "still" | "media";
     }
   | {
       renderId: string;
-      type: "still" | "media";
       url: string | undefined;
       price: number;
       status: "done";
@@ -45,32 +41,6 @@ export const useLambda = (
 
   const getUrl = (id: string) => `/api/lambda/view?id=${id}`;
 
-  const renderStill = useCallback(async () => {
-    if (state.status === "rendering") {
-      return alert("Already rendering");
-    }
-    init();
-
-    try {
-      const result = await postStill(id, inputProps);
-
-      setState({
-        status: "done",
-        type: "still",
-        price: result.estimatedPrice.accruedSoFar,
-        renderId: result.renderId,
-        url: getUrl(result.renderId),
-      });
-    } catch (err) {
-      setState({
-        status: "error",
-        error: err as Error,
-        renderId: null,
-        type: "still",
-      });
-    }
-  }, [id, inputProps, state.status]);
-
   const renderMedia = useCallback(async () => {
     if (state.status === "rendering") return alert("Already rendering");
     init();
@@ -81,24 +51,18 @@ export const useLambda = (
         status: "rendering",
         progress: 0,
         renderId: result.renderId,
-        type: "media",
       });
     } catch (err) {
       setState({
         status: "error",
         error: err as Error,
         renderId: null,
-        type: "media",
       });
     }
   }, [id, inputProps, state.status]);
 
   useEffect(() => {
-    if (
-      state.status === "rendering" &&
-      state.renderId &&
-      state.type === "media"
-    ) {
+    if (state.status === "rendering" && state.renderId) {
       const interval = setInterval(async () => {
         try {
           const result = await getProgress(state.renderId);
@@ -148,7 +112,6 @@ export const useLambda = (
 
   return {
     renderMedia,
-    renderStill,
     state,
   };
 };
