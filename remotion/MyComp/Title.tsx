@@ -1,6 +1,12 @@
 import { interpolate } from "remotion";
 import { useCurrentFrame } from "remotion";
-import React from "react";
+import React, { useMemo } from "react";
+import { fontFamily } from "@remotion/google-fonts/Inter";
+
+const alwaysStyle: React.CSSProperties = {
+  fontSize: 48,
+  fontWeight: "bold",
+};
 
 export const Title = ({ title }: { title: string }) => {
   const frame = useCurrentFrame();
@@ -8,9 +14,10 @@ export const Title = ({ title }: { title: string }) => {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  return (
-    <div style={{ opacity }} className=" text-5xl font-bold leading-relaxed">
-      {title}
-    </div>
-  );
+
+  const style: React.CSSProperties = useMemo(() => {
+    return { ...alwaysStyle, opacity, fontFamily };
+  }, [opacity]);
+
+  return <div style={style}>{title}</div>;
 };

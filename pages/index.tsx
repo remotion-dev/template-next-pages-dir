@@ -3,10 +3,11 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import React, { useMemo, useState } from "react";
 import { RenderStatus } from "../components/RenderStatus";
-import { Textarea } from "../components/Input";
+import { Input } from "../components/Input";
 import { useLambda } from "../hooks/useLambda";
 import { MyComposition } from "../remotion/MyComp/Composition";
 import { defaultMyCompProps, MyCompProps } from "../types/MyComp";
+import { InputContainer } from "../components/Container";
 
 const container: React.CSSProperties = {
   maxWidth: 768,
@@ -74,8 +75,8 @@ const Home: NextPage = () => {
           />
         </div>
         <div>
-          <Textarea setText={setText} text={text}></Textarea>
-          <div style={lower}>
+          <InputContainer>
+            <Input setText={setText} text={text}></Input>
             <button
               onClick={renderMedia}
               disabled={state.status === "rendering"}
@@ -83,6 +84,8 @@ const Home: NextPage = () => {
             >
               Render
             </button>
+          </InputContainer>
+          <div style={lower}>
             <RenderStatus state={state} />
           </div>
         </div>

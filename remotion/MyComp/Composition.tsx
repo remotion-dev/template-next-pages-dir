@@ -3,6 +3,10 @@ import { MyCompProps } from "../../types/MyComp";
 import { NextLogo } from "./NextLogo";
 import { RemotionLogo } from "./RemotionLogo";
 import { Title } from "./Title";
+import { loadFont, fontFamily } from "@remotion/google-fonts/Inter";
+
+export const FONT_FAMILY = fontFamily;
+loadFont();
 
 const spacer: React.CSSProperties = {
   width: 400,

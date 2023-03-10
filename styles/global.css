@@ -4,6 +4,9 @@
     --focused-border-color: #666;
 }
 
+* {
+    box-sizing: border-box;
+}
 
 .cinematics {
     box-shadow: 0 0 200px rgba(0, 0, 0, 0.15)
