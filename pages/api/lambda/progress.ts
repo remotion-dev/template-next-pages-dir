@@ -5,7 +5,7 @@ import {
   RenderProgress,
 } from "@remotion/lambda";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { config } from "../../../config";
+import { config, speculateFunctionName } from "../../../config";
 
 export default async function progress(
   req: NextApiRequest,
@@ -22,7 +22,7 @@ export default async function progress(
   // TODO: Validate
   const result = await getRenderProgress({
     bucketName,
-    functionName: config.functionName as string,
+    functionName: speculateFunctionName(),
     region: config.region as AwsRegion,
     renderId: req.query.id as string,
   });

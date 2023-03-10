@@ -23,8 +23,6 @@ export type State =
     }
   | {
       renderId: string;
-      url: string | undefined;
-      price: number;
       status: "done";
     };
 
@@ -78,9 +76,7 @@ export const useLambda = (
           if (result.done)
             setState({
               renderId: result.renderId,
-              price: result.costs.accruedSoFar,
               status: "done",
-              url: `/api/lambda/view?id=${id}`,
             });
           setState((s) => ({
             ...s,
