@@ -1,6 +1,7 @@
 import { AwsRegion, getRenderProgress } from "@remotion/lambda";
-import { config, speculateFunctionName } from "../../../config";
+import { REGION } from "../../../config";
 import { executeApi } from "../../../helpers/api-response";
+import { speculateFunctionName } from "../../../helpers/speculate-function-name.js";
 import { ProgressRequest, ProgressResponse } from "../../../types/schema";
 
 const progress = executeApi<ProgressResponse, typeof ProgressRequest>(
@@ -10,11 +11,10 @@ const progress = executeApi<ProgressResponse, typeof ProgressRequest>(
       throw new Error("Only POST requests are allowed");
     }
 
-    // TODO: Validate
     const renderProgress = await getRenderProgress({
       bucketName: body.bucketName,
       functionName: speculateFunctionName(),
-      region: config.region as AwsRegion,
+      region: REGION as AwsRegion,
       renderId: body.id,
     });
 

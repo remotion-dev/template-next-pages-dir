@@ -1,7 +1,8 @@
 import { AwsRegion, RenderMediaOnLambdaOutput } from "@remotion/lambda";
 import { renderMediaOnLambda } from "@remotion/lambda/client";
-import { config, speculateFunctionName } from "../../../config";
+import { REGION, SITE_NAME } from "../../../config";
 import { executeApi } from "../../../helpers/api-response";
+import { speculateFunctionName } from "../../../helpers/speculate-function-name.js";
 import { RenderRequest } from "../../../types/schema";
 
 const render = executeApi<RenderMediaOnLambdaOutput, typeof RenderRequest>(
@@ -14,8 +15,8 @@ const render = executeApi<RenderMediaOnLambdaOutput, typeof RenderRequest>(
     const result = await renderMediaOnLambda({
       codec: "h264",
       functionName: speculateFunctionName(),
-      region: config.region as AwsRegion,
-      serveUrl: config.serveUrl as string,
+      region: REGION as AwsRegion,
+      serveUrl: SITE_NAME,
       composition: body.id,
       inputProps: body.inputProps,
     });
