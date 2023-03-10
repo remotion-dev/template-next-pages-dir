@@ -11,18 +11,12 @@ export const RenderStatus: React.FC<{
           <div style={{ width: `${(state.progress ?? 0) * 100}%` }}></div>
         </div>
       ) : null}
-      {state.status === "done" ? <p>Price: {state.price}</p> : null}
       {state.status === "done" && (
         <div>
           <a href={state.url} target="_blank" rel="noreferrer">
             Open
           </a>
-          <a
-            href={state.url}
-            target="_blank"
-            rel="noreferrer"
-            download={state.renderId}
-          >
+          <a href={state.url} target="_blank" rel="noreferrer">
             Download
           </a>
         </div>

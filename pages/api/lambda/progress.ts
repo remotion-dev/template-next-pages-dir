@@ -1,22 +1,34 @@
-import { AwsRegion, getRenderProgress, RenderProgress } from "@remotion/lambda";
-import type { NextApiRequest, NextApiResponse } from "next";
+import { AwsRegion, getRenderProgress } from "@remotion/lambda";
 import { config, speculateFunctionName } from "../../../config";
+import { executeApi } from "../../../helpers/api-response";
+import { ProgressRequest, ProgressResponse } from "../../../types/schema";
 
-export default async function progress(
-  req: NextApiRequest,
-  res: NextApiResponse<RenderProgress>
-) {
-  if (req.method !== "GET") {
-    return res.status(405).end();
+const progress = executeApi<ProgressResponse, typeof ProgressRequest>(
+  ProgressRequest,
+  async (req, body) => {
+    if (req.method !== "POST") {
+      throw new Error("Only POST requests are allowed");
+    }
+
+    // TODO: Validate
+    const renderProgress = await getRenderProgress({
+      bucketName: body.bucketName,
+      functionName: speculateFunctionName(),
+      region: config.region as AwsRegion,
+      renderId: body.id,
+    });
+
+    if (renderProgress.fatalErrorEncountered) {
+      return {
+        type: "error",
+        message: renderProgress.errors[0].message,
+      };
+    }
+
+    return {
+      type: "unknown",
+    };
   }
+);
 
-  // TODO: Validate
-  const result = await getRenderProgress({
-    bucketName: req.query.bucketName as string,
-    functionName: speculateFunctionName(),
-    region: config.region as AwsRegion,
-    renderId: req.query.id as string,
-  });
-
-  res.status(200).json(result);
-}
+export default progress;
