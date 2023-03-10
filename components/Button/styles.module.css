@@ -9,6 +9,9 @@
     font-family: var(--geist-font);
     font-weight: 500;
     transition: all 0.15s ease;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .button:hover {
