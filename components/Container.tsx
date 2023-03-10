@@ -4,7 +4,7 @@ const inputContainer: React.CSSProperties = {
   border: "1px solid var(--unfocused-border-color)",
   padding: "var(--geist-pad)",
   borderRadius: "var(--geist-border-radius)",
-  backgroundColor: "white",
+  backgroundColor: "var(--background)",
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-end",

@@ -6,8 +6,10 @@ const textarea: React.CSSProperties = {
   display: "block",
   width: "100%",
   borderRadius: "var(--geist-border-radius)",
-  backgroundColor: "white",
+  backgroundColor: "var(--background)",
   padding: "var(--geist-half-pad)",
+  color: "var(--foreground)",
+  fontSize: 14,
 };
 
 export const Input: React.FC<{
@@ -22,6 +24,6 @@ export const Input: React.FC<{
   );
 
   return (
-    <input name="props" style={textarea} value={text} onChange={onChange} />
+    <input name="title" style={textarea} value={text} onChange={onChange} />
   );
 };
