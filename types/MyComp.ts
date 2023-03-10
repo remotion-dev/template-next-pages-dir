@@ -1,3 +1,5 @@
+export const COMP_NAME = "MyComp";
+
 export interface MyCompProps {
   title: string;
 }

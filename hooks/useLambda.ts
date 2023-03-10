@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { getProgress } from "../lambda/getProgress";
 import { postMedia } from "../lambda/postMedia";
 import { postStill } from "../lambda/postStill";
+import { MyCompProps } from "../types/MyComp";
 
 export type State =
   | {
@@ -29,7 +30,7 @@ export type State =
 
 export const useLambda = (
   id: string,
-  inputProps: unknown,
+  inputProps: MyCompProps,
   refreshInterval = 1000
 ) => {
   const [state, setState] = useState<State>({

@@ -3,35 +3,15 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import React, { useMemo, useState } from "react";
 import { RenderStatus } from "../components/RenderStatus";
+import { Textarea } from "../components/Input";
 import { useLambda } from "../hooks/useLambda";
 import { MyComposition } from "../remotion/MyComp/Composition";
-import { defaultMyCompProps } from "../types/MyComp";
+import { defaultMyCompProps, MyCompProps } from "../types/MyComp";
 
 const container: React.CSSProperties = {
   maxWidth: 768,
   margin: "auto",
   marginBottom: 20,
-};
-
-const grid: React.CSSProperties = {
-  display: "grid",
-  gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-};
-
-const textareaContainer: React.CSSProperties = {
-  border: "1px solid #eaeaea",
-  padding: 24,
-  borderRadius: 6,
-};
-
-const textarea: React.CSSProperties = {
-  border: "1px solid #eaeaea",
-  resize: "none",
-  lineHeight: 1.7,
-  width: "100%",
-  padding: "7px 10px",
-  height: "100%",
-  borderRadius: 6,
 };
 
 const button: React.CSSProperties = {
@@ -43,7 +23,6 @@ const button: React.CSSProperties = {
   paddingRight: "1rem",
   paddingTop: "0.5rem",
   paddingBottom: "0.5rem",
-  margin: "0.5rem",
 };
 
 const player: React.CSSProperties = {
@@ -62,9 +41,13 @@ const lower: React.CSSProperties = {
 };
 
 const Home: NextPage = () => {
-  const [text, setText] = useState(JSON.stringify(defaultMyCompProps, null, 2));
+  const [text, setText] = useState<string>(defaultMyCompProps.title);
 
-  const props = useMemo(() => JSON.parse(text), [text]);
+  const props: MyCompProps = useMemo(() => {
+    return {
+      title: text,
+    };
+  }, [text]);
 
   const { renderMedia, state } = useLambda("MyComp", props);
 
@@ -90,15 +73,8 @@ const Home: NextPage = () => {
             loop
           />
         </div>
-        <div style={grid}>
-          <div style={textareaContainer}>
-            <textarea
-              name="props"
-              style={textarea}
-              value={text}
-              onChange={(e) => setText(e.currentTarget.value)}
-            />
-          </div>
+        <div>
+          <Textarea setText={setText} text={text}></Textarea>
           <div style={lower}>
             <button
               onClick={renderMedia}
