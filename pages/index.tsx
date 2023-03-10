@@ -15,6 +15,8 @@ import { InputContainer } from "../components/Container";
 import { Button } from "../components/Button/Button";
 import { Spacing } from "../components/Spacing";
 import { z } from "zod";
+import { ErrorComp } from "../components/Error";
+import { AlignEnd } from "../components/AlignEnd";
 
 const container: React.CSSProperties = {
   maxWidth: 768,
@@ -75,12 +77,18 @@ const Home: NextPage = () => {
             <Input setText={setText} text={text}></Input>
             <Spacing></Spacing>
             {state.status === "invoking" ? (
-              <Button loading onClick={renderMedia} disabled>
-                Rendering video
-              </Button>
-            ) : (
-              <Button onClick={renderMedia}>Render video</Button>
-            )}
+              <AlignEnd>
+                <Button loading onClick={renderMedia} disabled>
+                  Rendering video
+                </Button>
+              </AlignEnd>
+            ) : state.status === "init" ? (
+              <AlignEnd>
+                <Button onClick={renderMedia}>Render video</Button>
+              </AlignEnd>
+            ) : state.status === "error" ? (
+              <ErrorComp message={state.error.message}></ErrorComp>
+            ) : null}
           </InputContainer>
           <div style={lower}>
             <RenderStatus state={state} />

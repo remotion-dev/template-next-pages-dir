@@ -7,7 +7,6 @@ const inputContainer: React.CSSProperties = {
   backgroundColor: "var(--background)",
   display: "flex",
   flexDirection: "column",
-  alignItems: "flex-end",
 };
 
 export const InputContainer: React.FC<{
