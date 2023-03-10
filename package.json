@@ -14,16 +14,16 @@
     "remotion:render": "npx remotion lambda render "
   },
   "dependencies": {
-    "@remotion/cli": "^3.3.39",
-    "@remotion/eslint-config": "^3.3.39",
-    "@remotion/lambda": "^3.3.39",
-    "@remotion/player": "^3.3.39",
+    "@remotion/cli": "^3.3.65",
+    "@remotion/eslint-config": "^3.3.65",
+    "@remotion/lambda": "^3.3.65",
+    "@remotion/player": "^3.3.65",
     "eslint": "^8.14.0",
     "next": "12.3.1",
     "prettier": "^2.6.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "remotion": "^3.3.39"
+    "remotion": "^3.3.65"
   },
   "devDependencies": {
     "@types/node": "18.7.23",
