@@ -1,7 +1,7 @@
 export interface MyCompProps {
-    title: string
-    subtitle: string
-    backgroundColor: string
+  title: string;
 }
 
-export const defaultMyCompProps: MyCompProps = { title: "Welcome to Remotion with Tailwind", subtitle: "Edit src/Composition.tsx and save to reload.", backgroundColor: "white" }
+export const defaultMyCompProps: MyCompProps = {
+  title: "Next and Remotion",
+};
