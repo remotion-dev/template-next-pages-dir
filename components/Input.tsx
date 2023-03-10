@@ -1,20 +1,22 @@
 import React, { useCallback } from "react";
 
 const textareaContainer: React.CSSProperties = {
-  border: "1px solid #eaeaea",
+  border: "1px solid var(--unfocused-border-color)",
   padding: 24,
   borderRadius: 6,
   backgroundColor: "white",
 };
 
 const textarea: React.CSSProperties = {
-  border: "1px solid #eaeaea",
   resize: "none",
   lineHeight: 1.7,
   width: "100%",
   height: "100%",
   borderRadius: 6,
   backgroundColor: "white",
+  paddingLeft: 12,
+  paddingTop: 12,
+  paddingBottom: 12,
 };
 
 export const Textarea: React.FC<{

@@ -16,6 +16,7 @@
   "dependencies": {
     "@remotion/cli": "^3.3.65",
     "@remotion/eslint-config": "^3.3.65",
+    "@remotion/google-fonts": "^3.3.65",
     "@remotion/lambda": "^3.3.65",
     "@remotion/player": "^3.3.65",
     "eslint": "^8.14.0",
