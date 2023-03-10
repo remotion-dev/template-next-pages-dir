@@ -1,8 +1,8 @@
 import { AwsRegion, RenderMediaOnLambdaOutput } from "@remotion/lambda";
 import { renderMediaOnLambda } from "@remotion/lambda/client";
-import { REGION, SITE_NAME } from "../../../config";
+import { REGION, SITE_NAME } from "../../../config.mjs";
 import { executeApi } from "../../../helpers/api-response";
-import { speculateFunctionName } from "../../../helpers/speculate-function-name.js";
+import { speculateFunctionName } from "../../../helpers/speculate-function-name";
 import { RenderRequest } from "../../../types/schema";
 
 const render = executeApi<RenderMediaOnLambdaOutput, typeof RenderRequest>(

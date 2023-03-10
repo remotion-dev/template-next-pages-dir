@@ -1,7 +1,7 @@
 import { AwsRegion, getRenderProgress } from "@remotion/lambda";
-import { REGION } from "../../../config";
+import { REGION } from "../../../config.mjs";
 import { executeApi } from "../../../helpers/api-response";
-import { speculateFunctionName } from "../../../helpers/speculate-function-name.js";
+import { speculateFunctionName } from "../../../helpers/speculate-function-name";
 import { ProgressRequest, ProgressResponse } from "../../../types/schema";
 
 const progress = executeApi<ProgressResponse, typeof ProgressRequest>(
