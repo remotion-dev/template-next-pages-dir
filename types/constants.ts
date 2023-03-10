@@ -1,9 +1,10 @@
+import { z } from "zod";
 export const COMP_NAME = "MyComp";
 
-export interface MyCompProps {
-  title: string;
-}
+export const CompositionProps = z.object({
+  title: z.string(),
+});
 
-export const defaultMyCompProps: MyCompProps = {
+export const defaultMyCompProps: z.infer<typeof CompositionProps> = {
   title: "Next and Remotion",
 };

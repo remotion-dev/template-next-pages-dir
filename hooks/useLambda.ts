@@ -1,7 +1,8 @@
+import { z } from "zod";
 import { useCallback, useEffect, useState } from "react";
 import { getProgress } from "../lambda/getProgress";
-import { postMedia } from "../lambda/postMedia";
-import { MyCompProps } from "../types/constants";
+import { renderVideo } from "../lambda/render-media";
+import { CompositionProps } from "../types/constants";
 
 export type State =
   | {
@@ -29,7 +30,7 @@ export type State =
 
 export const useLambda = (
   id: string,
-  inputProps: MyCompProps,
+  inputProps: z.infer<typeof CompositionProps>,
   refreshInterval = 1000
 ) => {
   const [state, setState] = useState<State>({
@@ -41,7 +42,7 @@ export const useLambda = (
       status: "invoking",
     });
     try {
-      const result = await postMedia(id, inputProps);
+      const result = await renderVideo(id, inputProps);
 
       setState({
         status: "rendering",

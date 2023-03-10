@@ -6,10 +6,15 @@ import { RenderStatus } from "../components/RenderStatus";
 import { Input } from "../components/Input";
 import { useLambda } from "../hooks/useLambda";
 import { MyComposition } from "../remotion/MyComp/Composition";
-import { defaultMyCompProps, MyCompProps } from "../types/constants";
+import {
+  CompositionProps,
+  COMP_NAME,
+  defaultMyCompProps,
+} from "../types/constants";
 import { InputContainer } from "../components/Container";
 import { Button } from "../components/Button/Button";
 import { Spacing } from "../components/Spacing";
+import { z } from "zod";
 
 const container: React.CSSProperties = {
   maxWidth: 768,
@@ -35,13 +40,13 @@ const lower: React.CSSProperties = {
 const Home: NextPage = () => {
   const [text, setText] = useState<string>(defaultMyCompProps.title);
 
-  const props: MyCompProps = useMemo(() => {
+  const props: z.infer<typeof CompositionProps> = useMemo(() => {
     return {
       title: text,
     };
   }, [text]);
 
-  const { renderMedia, state } = useLambda("MyComp", props);
+  const { renderMedia, state } = useLambda(COMP_NAME, props);
 
   return (
     <div>
