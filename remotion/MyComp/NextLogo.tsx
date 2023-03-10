@@ -6,6 +6,10 @@ const style: React.CSSProperties = {
   borderRadius: 70,
 };
 
+const mask: React.CSSProperties = {
+  maskType: "alpha",
+};
+
 export const NextLogo: React.FC = () => {
   return (
     <svg style={style} fill="none" viewBox="0 0 180 180">
@@ -13,7 +17,7 @@ export const NextLogo: React.FC = () => {
         height="180"
         id="mask"
         maskUnits="userSpaceOnUse"
-        style={{ maskType: "alpha" }}
+        style={mask}
         width="180"
         x="0"
         y="0"

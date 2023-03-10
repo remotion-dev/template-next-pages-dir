@@ -3,7 +3,7 @@ import { getProgress } from "../lambda/getProgress";
 import { postMedia } from "../lambda/postMedia";
 import { postStill } from "../lambda/postStill";
 
-type State =
+export type State =
   | {
       status: "init";
     }

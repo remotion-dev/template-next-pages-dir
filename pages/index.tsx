@@ -2,6 +2,7 @@ import { Player } from "@remotion/player";
 import type { NextPage } from "next";
 import Head from "next/head";
 import React, { useMemo, useState } from "react";
+import { RenderStatus } from "../components/RenderStatus";
 import { useLambda } from "../hooks/useLambda";
 import { MyComposition } from "../remotion/MyComp/Composition";
 import { defaultMyCompProps } from "../types/MyComp";
@@ -106,39 +107,7 @@ const Home: NextPage = () => {
             >
               Render
             </button>
-            {state.status && (
-              <div className="w-full items-center flex flex-col">
-                {state.status === "rendering" ? (
-                  <div className="h-8 w-full bg-gray-500 rounded-full overflow-hidden relative">
-                    <div
-                      className="h-full left-0 top-0 bg-green-400"
-                      style={{ width: `${(state.progress ?? 0) * 100}%` }}
-                    ></div>
-                  </div>
-                ) : null}
-                {state.status === "done" ? <p>Price: {state.price}</p> : null}
-                {state.status === "done" && (
-                  <div className="text-green-500 space-x-4 uppercase">
-                    <a
-                      href={state.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className=""
-                    >
-                      Open
-                    </a>
-                    <a
-                      href={state.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      download={state.renderId}
-                    >
-                      Download
-                    </a>
-                  </div>
-                )}
-              </div>
-            )}
+            <RenderStatus state={state} />
           </div>
         </div>
       </div>
