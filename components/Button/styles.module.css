@@ -1,0 +1,19 @@
+.button {
+    border: 1px solid black;
+    border-radius: var(--geist-border-radius);
+    background-color: black;
+    color: white;
+    padding-left: var(--geist-half-pad);
+    padding-right: var(--geist-half-pad);
+    height: 40px;
+    font-family: var(--geist-font);
+    font-weight: 500;
+    transition: all 0.15s ease;
+}
+
+.button:hover {
+    background-color: white;
+    cursor: pointer;
+    color: black;
+    border-color: var(--focused-border-color);
+}

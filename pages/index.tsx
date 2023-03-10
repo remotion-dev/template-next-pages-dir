@@ -6,8 +6,10 @@ import { RenderStatus } from "../components/RenderStatus";
 import { Input } from "../components/Input";
 import { useLambda } from "../hooks/useLambda";
 import { MyComposition } from "../remotion/MyComp/Composition";
-import { defaultMyCompProps, MyCompProps } from "../types/MyComp";
+import { defaultMyCompProps, MyCompProps } from "../types/constants";
 import { InputContainer } from "../components/Container";
+import { Button } from "../components/Button/Button";
+import { Spacing } from "../components/Spacing";
 
 const container: React.CSSProperties = {
   maxWidth: 768,
@@ -15,23 +17,12 @@ const container: React.CSSProperties = {
   marginBottom: 20,
 };
 
-const button: React.CSSProperties = {
-  border: "none",
-  borderRadius: "0.5rem",
-  backgroundColor: "black",
-  color: "white",
-  paddingLeft: "1rem",
-  paddingRight: "1rem",
-  paddingTop: "0.5rem",
-  paddingBottom: "0.5rem",
-};
-
 const player: React.CSSProperties = {
   width: "100%",
   boxShadow: "0 0 200px rgba(0, 0, 0, 0.15)",
   marginBottom: 40,
   marginTop: 60,
-  borderRadius: 6,
+  borderRadius: "var(--geist-border-radius)",
   overflow: "hidden",
 };
 
@@ -77,13 +68,13 @@ const Home: NextPage = () => {
         <div>
           <InputContainer>
             <Input setText={setText} text={text}></Input>
-            <button
+            <Spacing></Spacing>
+            <Button
               onClick={renderMedia}
               disabled={state.status === "rendering"}
-              style={button}
             >
-              Render
-            </button>
+              Render video
+            </Button>
           </InputContainer>
           <div style={lower}>
             <RenderStatus state={state} />

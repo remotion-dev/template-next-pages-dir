@@ -2,9 +2,12 @@ import React from "react";
 
 const inputContainer: React.CSSProperties = {
   border: "1px solid var(--unfocused-border-color)",
-  padding: 24,
-  borderRadius: 6,
+  padding: "var(--geist-pad)",
+  borderRadius: "var(--geist-border-radius)",
   backgroundColor: "white",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-end",
 };
 
 export const InputContainer: React.FC<{

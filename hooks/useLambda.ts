@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { getProgress } from "../lambda/getProgress";
 import { postMedia } from "../lambda/postMedia";
 import { postStill } from "../lambda/postStill";
-import { MyCompProps } from "../types/MyComp";
+import { MyCompProps } from "../types/constants";
 
 export type State =
   | {

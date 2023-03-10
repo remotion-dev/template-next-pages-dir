@@ -5,12 +5,9 @@ const textarea: React.CSSProperties = {
   lineHeight: 1.7,
   display: "block",
   width: "100%",
-  borderRadius: 6,
+  borderRadius: "var(--geist-border-radius)",
   backgroundColor: "white",
-  paddingLeft: 12,
-  paddingRight: 12,
-  paddingTop: 12,
-  paddingBottom: 12,
+  padding: "var(--geist-half-pad)",
 };
 
 export const Input: React.FC<{

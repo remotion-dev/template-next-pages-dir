@@ -1,5 +1,5 @@
 import { AbsoluteFill } from "remotion";
-import { MyCompProps } from "../../types/MyComp";
+import { MyCompProps } from "../../types/constants";
 import { NextLogo } from "./NextLogo";
 import { RemotionLogo } from "./RemotionLogo";
 import { Title } from "./Title";
