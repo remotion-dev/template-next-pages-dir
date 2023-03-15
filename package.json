@@ -8,10 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "preview": "remotion preview remotion/index.tsx",
-    "render": "remotion render remotion/index.tsx ",
-    "remotion:site": "npx remotion lambda sites create remotion/index.tsx --site-name=remotion-next-example",
-    "remotion:function": "npx remotion lambda functions deploy",
-    "remotion:render": "npx remotion lambda render "
+    "render": "remotion render remotion/index.tsx"
   },
   "dependencies": {
     "@remotion/cli": "^3.3.77",
