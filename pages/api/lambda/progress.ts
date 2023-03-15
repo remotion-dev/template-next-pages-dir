@@ -1,7 +1,7 @@
 import { AwsRegion, getRenderProgress } from "@remotion/lambda";
-import { REGION } from "../../../config.mjs";
+import { speculateFunctionName } from "@remotion/lambda/client";
+import { DISK, RAM, REGION, TIMEOUT } from "../../../config.mjs";
 import { executeApi } from "../../../helpers/api-response";
-import { speculateFunctionName } from "../../../helpers/speculate-function-name";
 import { ProgressRequest, ProgressResponse } from "../../../types/schema";
 
 const progress = executeApi<ProgressResponse, typeof ProgressRequest>(
@@ -13,7 +13,11 @@ const progress = executeApi<ProgressResponse, typeof ProgressRequest>(
 
     const renderProgress = await getRenderProgress({
       bucketName: body.bucketName,
-      functionName: speculateFunctionName(),
+      functionName: speculateFunctionName({
+        diskSizeInMb: DISK,
+        memorySizeInMb: RAM,
+        timeoutInSeconds: TIMEOUT,
+      }),
       region: REGION as AwsRegion,
       renderId: body.id,
     });
