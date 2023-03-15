@@ -29,8 +29,17 @@ const progress = executeApi<ProgressResponse, typeof ProgressRequest>(
       };
     }
 
+    if (renderProgress.done) {
+      return {
+        type: "done",
+        url: renderProgress.outputFile as string,
+        size: renderProgress.outputSizeInBytes as number,
+      };
+    }
+
     return {
-      type: "unknown",
+      type: "progress",
+      progress: renderProgress.overallProgress,
     };
   }
 );

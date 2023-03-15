@@ -24,7 +24,4 @@ export type ProgressResponse =
       type: "done";
       url: string;
       size: number;
-    }
-  | {
-      type: "unknown";
     };
