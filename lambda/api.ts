@@ -27,10 +27,13 @@ export const makeRequest = async <Res>(
   return json.data;
 };
 
-export const renderVideo = async (
-  id: string,
-  inputProps: z.infer<typeof CompositionProps>
-) => {
+export const renderVideo = async ({
+  id,
+  inputProps,
+}: {
+  id: string;
+  inputProps: z.infer<typeof CompositionProps>;
+}) => {
   const body: z.infer<typeof RenderRequest> = {
     id,
     inputProps,
@@ -39,7 +42,13 @@ export const renderVideo = async (
   return makeRequest<RenderMediaOnLambdaOutput>("/api/lambda/render", body);
 };
 
-export const getProgress = async (id: string, bucketName: string) => {
+export const getProgress = async ({
+  id,
+  bucketName,
+}: {
+  id: string;
+  bucketName: string;
+}) => {
   const body: z.infer<typeof ProgressRequest> = {
     id,
     bucketName,

@@ -21,8 +21,8 @@ if (!process.env.AWS_ACCESS_KEY_ID && !process.env.REMOTION_AWS_ACCESS_KEY_ID) {
   process.exit(1);
 }
 if (
-  !process.env.REMOTION_AWS_SECRET_ACCESS_KEY &&
-  !process.env.REMOTION_REMOTION_AWS_SECRET_ACCESS_KEY
+  !process.env.AWS_SECRET_ACCESS_KEY &&
+  !process.env.REMOTION_AWS_SECRET_ACCESS_KEY
 ) {
   console.log(
     'The environment variable "REMOTION_REMOTION_AWS_SECRET_ACCESS_KEY" is not yet.'

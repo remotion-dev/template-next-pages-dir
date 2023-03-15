@@ -41,7 +41,7 @@ export const useLambda = (
       status: "invoking",
     });
     try {
-      const result = await renderVideo(id, inputProps);
+      const result = await renderVideo({ id, inputProps });
 
       setState({
         status: "rendering",
@@ -64,7 +64,10 @@ export const useLambda = (
     }
     const interval = setInterval(async () => {
       try {
-        const result = await getProgress(state.renderId, state.renderId);
+        const result = await getProgress({
+          id: state.renderId,
+          bucketName: state.bucketName,
+        });
         if (result.type === "error") {
           setState({
             status: "error",
