@@ -40,5 +40,5 @@ console.log(siteName);
 console.log();
 console.log("You now have everything you need to render videos!");
 console.log("Re-run this command when:");
-console.log("   1) you changed the video template");
-console.log("   2) you upgraded Remotion");
+console.log("  1) you changed the video template");
+console.log("  2) you upgraded Remotion to a newer version");
