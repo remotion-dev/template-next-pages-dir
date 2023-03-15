@@ -10,12 +10,14 @@ export const RenderProgress: React.FC<{
       borderRadius: 5,
       appearance: "none",
       backgroundColor: "var(--unfocused-border-color)",
+      marginTop: 10,
+      marginBottom: 25,
     };
   }, []);
 
   const fill: React.CSSProperties = useMemo(() => {
     return {
-      backgroundColor: "white",
+      backgroundColor: "var(--foreground)",
       height: 10,
       borderRadius: 5,
       transition: "width 0.1s ease-in-out",

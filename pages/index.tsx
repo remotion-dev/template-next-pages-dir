@@ -2,7 +2,7 @@ import { Player } from "@remotion/player";
 import type { NextPage } from "next";
 import Head from "next/head";
 import React, { useMemo, useState } from "react";
-import { RenderProgress } from "../components/RenderStatus";
+import { RenderProgress } from "../components/ProgressBar";
 import { Input } from "../components/Input";
 import { useLambda } from "../hooks/useLambda";
 import { MyComposition } from "../remotion/MyComp/Composition";
@@ -69,7 +69,9 @@ const Home: NextPage = () => {
         </div>
         <div>
           <InputContainer>
-            {state.status === "init" || state.status === "invoking" ? (
+            {state.status === "init" ||
+            state.status === "invoking" ||
+            state.status === "error" ? (
               <>
                 <Input
                   disabled={state.status === "invoking"}
@@ -86,6 +88,9 @@ const Home: NextPage = () => {
                     Render video
                   </Button>
                 </AlignEnd>
+                {state.status === "error" ? (
+                  <ErrorComp message={state.error.message}></ErrorComp>
+                ) : null}
               </>
             ) : null}
             {state.status === "rendering" || state.status === "done" ? (
@@ -98,9 +103,6 @@ const Home: NextPage = () => {
                   <DownloadButton state={state}></DownloadButton>
                 </AlignEnd>
               </>
-            ) : null}
-            {state.status === "error" ? (
-              <ErrorComp message={state.error.message}></ErrorComp>
             ) : null}
           </InputContainer>
         </div>
