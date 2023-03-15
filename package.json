@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "preview": "remotion preview remotion/index.tsx",
-    "render": "remotion render remotion/index.tsx"
+    "preview": "remotion preview",
+    "render": "remotion render"
   },
   "dependencies": {
     "@remotion/cli": "^3.3.77",

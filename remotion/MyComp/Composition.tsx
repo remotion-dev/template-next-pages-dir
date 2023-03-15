@@ -5,6 +5,7 @@ import { NextLogo } from "./NextLogo";
 import { RemotionLogo } from "./RemotionLogo";
 import { Title } from "./Title";
 import { loadFont, fontFamily } from "@remotion/google-fonts/Inter";
+import React from "react";
 
 export const FONT_FAMILY = fontFamily;
 loadFont();
@@ -17,10 +18,21 @@ const spacer2: React.CSSProperties = {
   margin: "2.5rem",
 };
 
+const outer: React.CSSProperties = {
+  backgroundColor: "white",
+  justifyContent: "center",
+  alignItems: "center",
+};
+
+const row: React.CSSProperties = {
+  flexDirection: "row",
+  display: "flex",
+};
+
 export const MyComposition = ({ title }: z.infer<typeof CompositionProps>) => {
   return (
-    <AbsoluteFill className="bg-white items-center justify-center">
-      <div className="row flex items-center justify-conter">
+    <AbsoluteFill style={outer}>
+      <div style={row}>
         <NextLogo></NextLogo>
         <div style={spacer}></div>
         <RemotionLogo></RemotionLogo>
