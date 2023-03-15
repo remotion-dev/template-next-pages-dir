@@ -4,7 +4,6 @@ import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 
 const style: React.CSSProperties = {
   height: 140,
-  boxShadow: "0 0 300px black, 0 0 300px black",
   borderRadius: 70,
 };
 

@@ -6,24 +6,9 @@ const style: React.CSSProperties = {
   height: logoSize,
 };
 
-const size = 1000;
-
 export const RemotionLogo: React.FC = () => {
   return (
     <div>
-      <div
-        style={{
-          position: "absolute",
-          width: size,
-          marginLeft: -size / 2 + logoSize / 2,
-          height: size,
-          marginTop: -size / 2 + logoSize / 2,
-          overflow: "visible",
-          opacity: 0.2,
-          backgroundImage: "radial-gradient(#0B84F3, transparent 70%)",
-          zIndex: 0,
-        }}
-      ></div>
       <svg
         style={style}
         viewBox="0 0 410 425"
