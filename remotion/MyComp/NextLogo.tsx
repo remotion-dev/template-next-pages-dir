@@ -1,4 +1,6 @@
+import { evolvePath } from "@remotion/paths";
 import React from "react";
+import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 
 const style: React.CSSProperties = {
   height: 140,
@@ -10,31 +12,83 @@ const mask: React.CSSProperties = {
   maskType: "alpha",
 };
 
+const nStroke =
+  "M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z";
+
 export const NextLogo: React.FC = () => {
+  const { fps } = useVideoConfig();
+  const frame = useCurrentFrame();
+
+  const evolve1 = spring({
+    fps,
+    frame,
+    config: {
+      damping: 200,
+    },
+  });
+  const evolve2 = spring({
+    fps,
+    frame: frame - 15,
+    config: {
+      damping: 200,
+    },
+  });
+  const evolve3 = spring({
+    fps,
+    frame: frame - 30,
+    config: {
+      damping: 200,
+      mass: 3,
+    },
+    durationInFrames: 30,
+  });
+  const firstPath = `M 60.0568 54 v 71.97`;
+  const secondPath = `M 63.47956 56.17496 L 144.7535 161.1825`;
+  const thirdPath = `M 121 54 L 121 126`;
+
+  const evolution1 = evolvePath(evolve1, firstPath);
+  const evolution2 = evolvePath(evolve2, secondPath);
+  const evolution3 = evolvePath(
+    interpolate(evolve3, [0, 1], [0, 0.7]),
+    thirdPath
+  );
+
   return (
     <svg style={style} fill="none" viewBox="0 0 180 180">
-      <mask
-        height="180"
-        id="mask"
-        maskUnits="userSpaceOnUse"
-        style={mask}
-        width="180"
-        x="0"
-        y="0"
-      >
+      <mask height="180" id="mask" style={mask} width="180" x="0" y="0">
         <circle cx="90" cy="90" fill="black" r="90"></circle>
+      </mask>
+      <mask id="n-mask" style={mask}>
+        <path d={nStroke} fill="black"></path>
       </mask>
       <g mask="url(#mask)">
         <circle cx="90" cy="90" fill="black" r="90"></circle>
-        <g fill="url(#paint0)">
-          <path d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z"></path>
+        <g stroke="url(#gradient0)" mask="url(#n-mask)">
+          <path
+            strokeWidth="12.1136"
+            d={firstPath}
+            strokeDasharray={evolution1.strokeDasharray}
+            strokeDashoffset={evolution1.strokeDashoffset}
+          ></path>
+          <path
+            strokeWidth={12.1136}
+            d={secondPath}
+            strokeDasharray={evolution2.strokeDasharray}
+            strokeDashoffset={evolution2.strokeDashoffset}
+          ></path>
         </g>
-        <rect fill="url(#paint1)" height="72" width="12" x="115" y="54"></rect>
+        <path
+          stroke="url(#gradient1)"
+          d={thirdPath}
+          strokeDasharray={evolution3.strokeDasharray}
+          strokeDashoffset={evolution3.strokeDashoffset}
+          strokeWidth="12"
+        ></path>
       </g>
       <defs>
         <linearGradient
           gradientUnits="userSpaceOnUse"
-          id="paint0"
+          id="gradient0"
           x1="109"
           x2="144.5"
           y1="116.5"
@@ -45,7 +99,7 @@ export const NextLogo: React.FC = () => {
         </linearGradient>
         <linearGradient
           gradientUnits="userSpaceOnUse"
-          id="paint1"
+          id="gradient1"
           x1="121"
           x2="120.799"
           y1="54"
