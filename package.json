@@ -14,20 +14,20 @@
     "remotion:render": "npx remotion lambda render "
   },
   "dependencies": {
-    "@remotion/cli": "^3.3.65",
-    "@remotion/eslint-config": "^3.3.65",
-    "@remotion/google-fonts": "^3.3.65",
-    "@remotion/lambda": "^3.3.65",
-    "@remotion/paths": "^3.3.65",
-    "@remotion/player": "^3.3.65",
-    "@remotion/shapes": "^3.3.65",
+    "@remotion/cli": "^3.3.77",
+    "@remotion/eslint-config": "^3.3.77",
+    "@remotion/google-fonts": "^3.3.77",
+    "@remotion/lambda": "^3.3.77",
+    "@remotion/paths": "^3.3.77",
+    "@remotion/player": "^3.3.77",
+    "@remotion/shapes": "^3.3.77",
     "dotenv": "^16.0.3",
     "eslint": "^8.14.0",
     "next": "12.3.1",
     "prettier": "^2.6.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "remotion": "^3.3.65",
+    "remotion": "^3.3.77",
     "zod": "^3.21.4"
   },
   "devDependencies": {
