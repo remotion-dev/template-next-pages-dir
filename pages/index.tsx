@@ -17,6 +17,7 @@ import { Spacing } from "../components/Spacing";
 import { z } from "zod";
 import { ErrorComp } from "../components/Error";
 import { AlignEnd } from "../components/AlignEnd";
+import { DownloadButton } from "../components/DownloadButton";
 
 const container: React.CSSProperties = {
   maxWidth: 768,
@@ -31,12 +32,6 @@ const player: React.CSSProperties = {
   marginTop: 60,
   borderRadius: "var(--geist-border-radius)",
   overflow: "hidden",
-};
-
-const lower: React.CSSProperties = {
-  display: "flex",
-  flexDirection: "column",
-  justifyItems: "center",
 };
 
 const Home: NextPage = () => {
@@ -74,8 +69,6 @@ const Home: NextPage = () => {
         </div>
         <div>
           <InputContainer>
-            <Input setText={setText} text={text}></Input>
-            <Spacing></Spacing>
             {state.status === "invoking" ? (
               <AlignEnd>
                 <Button loading onClick={renderMedia} disabled>
@@ -83,16 +76,26 @@ const Home: NextPage = () => {
                 </Button>
               </AlignEnd>
             ) : state.status === "init" ? (
-              <AlignEnd>
-                <Button onClick={renderMedia}>Render video</Button>
-              </AlignEnd>
+              <>
+                <Input setText={setText} text={text}></Input>
+                <Spacing></Spacing>
+                <AlignEnd>
+                  <Button onClick={renderMedia}>Render video</Button>
+                </AlignEnd>
+              </>
+            ) : state.status === "rendering" ? (
+              <RenderStatus state={state} />
             ) : state.status === "error" ? (
               <ErrorComp message={state.error.message}></ErrorComp>
+            ) : state.status === "done" ? (
+              <div>
+                <DownloadButton
+                  sizeInBytes={state.size}
+                  url={state.url}
+                ></DownloadButton>
+              </div>
             ) : null}
           </InputContainer>
-          <div style={lower}>
-            <RenderStatus state={state} />
-          </div>
         </div>
       </div>
     </div>

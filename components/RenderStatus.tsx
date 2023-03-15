@@ -6,21 +6,7 @@ export const RenderStatus: React.FC<{
 }> = ({ state }) => {
   return (
     <div>
-      {state.status === "rendering" ? (
-        <div>
-          <div style={{ width: `${(state.progress ?? 0) * 100}%` }}></div>
-        </div>
-      ) : null}
-      {state.status === "done" && (
-        <div>
-          <a href={state.url} target="_blank" rel="noreferrer">
-            Open
-          </a>
-          <a href={state.url} target="_blank" rel="noreferrer">
-            Download
-          </a>
-        </div>
-      )}
+      {state.status === "rendering" ? <div>{state.progress}</div> : null}
     </div>
   );
 };

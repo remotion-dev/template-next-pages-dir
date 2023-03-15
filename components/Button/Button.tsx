@@ -4,7 +4,7 @@ import { Spinner } from "../Spinner/Spinner";
 import styles from "./styles.module.css";
 
 export const Button: React.FC<{
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
   children: React.ReactNode;
   loading?: boolean;
