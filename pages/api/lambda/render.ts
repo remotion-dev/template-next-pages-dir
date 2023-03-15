@@ -42,6 +42,10 @@ const render = executeApi<RenderMediaOnLambdaOutput, typeof RenderRequest>(
       serveUrl: SITE_NAME,
       composition: body.id,
       inputProps: body.inputProps,
+      downloadBehavior: {
+        type: "download",
+        fileName: "video.mp4",
+      },
     });
 
     return result;
