@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import { State } from "../hooks/useLambda";
 import { Button } from "./Button/Button";
 import { Spacing } from "./Spacing";
 
@@ -7,22 +8,35 @@ const light: React.CSSProperties = {
   opacity: 0.6,
 };
 
-export const DownloadButton: React.FC<{
-  url: string;
+const Megabytes: React.FC<{
   sizeInBytes: number;
-}> = ({ url, sizeInBytes }) => {
+}> = ({ sizeInBytes }) => {
   const megabytes = Intl.NumberFormat("en", {
     notation: "compact",
     style: "unit",
     unit: "byte",
     unitDisplay: "narrow",
   }).format(sizeInBytes);
+  return <span style={light}>{megabytes}</span>;
+};
+
+export const DownloadButton: React.FC<{
+  state: State;
+}> = ({ state }) => {
+  if (state.status === "rendering") {
+    return <Button disabled>Download video</Button>;
+  }
+
+  if (state.status !== "done") {
+    throw new Error("Download button should not be rendered when not done");
+  }
 
   return (
-    <Link href={url}>
+    <Link href={state.url}>
       <Button>
         Download video
-        <Spacing></Spacing> <span style={light}>{megabytes}</span>
+        <Spacing></Spacing>
+        <Megabytes sizeInBytes={state.size}></Megabytes>
       </Button>
     </Link>
   );

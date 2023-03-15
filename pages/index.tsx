@@ -2,7 +2,7 @@ import { Player } from "@remotion/player";
 import type { NextPage } from "next";
 import Head from "next/head";
 import React, { useMemo, useState } from "react";
-import { RenderStatus } from "../components/RenderStatus";
+import { RenderProgress } from "../components/RenderStatus";
 import { Input } from "../components/Input";
 import { useLambda } from "../hooks/useLambda";
 import { MyComposition } from "../remotion/MyComp/Composition";
@@ -69,31 +69,38 @@ const Home: NextPage = () => {
         </div>
         <div>
           <InputContainer>
-            {state.status === "invoking" ? (
-              <AlignEnd>
-                <Button loading onClick={renderMedia} disabled>
-                  Rendering video
-                </Button>
-              </AlignEnd>
-            ) : state.status === "init" ? (
+            {state.status === "init" || state.status === "invoking" ? (
               <>
-                <Input setText={setText} text={text}></Input>
+                <Input
+                  disabled={state.status === "invoking"}
+                  setText={setText}
+                  text={text}
+                ></Input>
                 <Spacing></Spacing>
                 <AlignEnd>
-                  <Button onClick={renderMedia}>Render video</Button>
+                  <Button
+                    disabled={state.status === "invoking"}
+                    loading={state.status === "invoking"}
+                    onClick={renderMedia}
+                  >
+                    Render video
+                  </Button>
                 </AlignEnd>
               </>
-            ) : state.status === "rendering" ? (
-              <RenderStatus state={state} />
-            ) : state.status === "error" ? (
+            ) : null}
+            {state.status === "rendering" || state.status === "done" ? (
+              <>
+                <RenderProgress
+                  progress={state.status === "rendering" ? state.progress : 1}
+                />
+                <Spacing></Spacing>
+                <AlignEnd>
+                  <DownloadButton state={state}></DownloadButton>
+                </AlignEnd>
+              </>
+            ) : null}
+            {state.status === "error" ? (
               <ErrorComp message={state.error.message}></ErrorComp>
-            ) : state.status === "done" ? (
-              <div>
-                <DownloadButton
-                  sizeInBytes={state.size}
-                  url={state.url}
-                ></DownloadButton>
-              </div>
             ) : null}
           </InputContainer>
         </div>

@@ -15,7 +15,8 @@ const textarea: React.CSSProperties = {
 export const Input: React.FC<{
   text: string;
   setText: React.Dispatch<React.SetStateAction<string>>;
-}> = ({ text, setText }) => {
+  disabled?: boolean;
+}> = ({ text, setText, disabled }) => {
   const onChange: React.ChangeEventHandler<HTMLInputElement> = useCallback(
     (e) => {
       setText(e.currentTarget.value);
@@ -24,6 +25,12 @@ export const Input: React.FC<{
   );
 
   return (
-    <input name="title" style={textarea} value={text} onChange={onChange} />
+    <input
+      disabled={disabled}
+      name="title"
+      style={textarea}
+      value={text}
+      onChange={onChange}
+    />
   );
 };
