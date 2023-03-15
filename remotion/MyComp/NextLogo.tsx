@@ -26,10 +26,9 @@ export const NextLogo: React.FC = () => {
       </mask>
       <g mask="url(#mask)">
         <circle cx="90" cy="90" fill="black" r="90"></circle>
-        <path
-          d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z"
-          fill="url(#paint0)"
-        ></path>
+        <g fill="url(#paint0)">
+          <path d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z"></path>
+        </g>
         <rect fill="url(#paint1)" height="72" width="12" x="115" y="54"></rect>
       </g>
       <defs>

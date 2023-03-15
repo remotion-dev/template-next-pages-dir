@@ -5,7 +5,7 @@ import React, { useMemo, useState } from "react";
 import { RenderProgress } from "../components/ProgressBar";
 import { Input } from "../components/Input";
 import { useLambda } from "../hooks/useLambda";
-import { MyComposition } from "../remotion/MyComp/Composition";
+import { Main } from "../remotion/MyComp/Main";
 import {
   CompositionProps,
   COMP_NAME,
@@ -55,7 +55,7 @@ const Home: NextPage = () => {
       <div style={container}>
         <div className="cinematics">
           <Player
-            component={MyComposition}
+            component={Main}
             inputProps={props}
             durationInFrames={120}
             fps={30}

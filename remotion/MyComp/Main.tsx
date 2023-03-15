@@ -29,7 +29,7 @@ const row: React.CSSProperties = {
   display: "flex",
 };
 
-export const MyComposition = ({ title }: z.infer<typeof CompositionProps>) => {
+export const Main = ({ title }: z.infer<typeof CompositionProps>) => {
   return (
     <AbsoluteFill style={outer}>
       <div style={row}>
