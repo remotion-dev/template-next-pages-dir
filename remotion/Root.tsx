@@ -2,7 +2,6 @@ import { Composition } from "remotion";
 import { Main } from "./MyComp/Main";
 import { COMP_NAME, defaultMyCompProps } from "../types/constants";
 import { NextLogo } from "./MyComp/NextLogo";
-import { RemotionLogo } from "./MyComp/RemotionLogo";
 import { RemotionAnimation } from "./MyComp/RemotionAnimation";
 
 export const Root: React.FC = () => {
