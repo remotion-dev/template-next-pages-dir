@@ -1,7 +1,5 @@
 # Remotion NextJS example
 
-### [EXAMPLE](https://remotion-next-example.vercel.app/)
-
 This is a NextJs project that is using `@remotion/player` and `@remotion/lambda`. Using tailwindcss and typescript.
 
 ## Getting Started
