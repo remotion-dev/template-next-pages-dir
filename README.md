@@ -11,17 +11,19 @@ Complete the [Lambda setup guide](https://www.remotion.dev/docs/lambda/setup) to
 
 Change the lambda site name in `package.json` `scripts.lambda:site` to your site name
 
-## Scripts
+## Commands
 
-`npm run dev` - Starts the Next.js dev server
+Start the Next.js dev server:
 
-`npm run build` - Builds the Next.js app
+```
+npm run dev
+```
 
-`npm run start` - Starts the Next.js app
+Open the Remotion Studio:
 
-`npm run studio` - Opens the Remotion Studio
-
-## Update AWS stack
+```
+npm run studio
+```
 
 The following script will set up your Remotion Bundle and Lambda function on AWS:
 
