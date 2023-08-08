@@ -15,7 +15,7 @@ export const RenderControls: React.FC<{
   setText: React.Dispatch<React.SetStateAction<string>>;
   inputProps: z.infer<typeof CompositionProps>;
 }> = ({ text, setText, inputProps }) => {
-  const { renderMedia, state } = useRendering(COMP_NAME, inputProps);
+  const { renderMedia, state, undo } = useRendering(COMP_NAME, inputProps);
 
   return (
     <InputContainer>
@@ -50,7 +50,7 @@ export const RenderControls: React.FC<{
           />
           <Spacing></Spacing>
           <AlignEnd>
-            <DownloadButton state={state}></DownloadButton>
+            <DownloadButton undo={undo} state={state}></DownloadButton>
           </AlignEnd>
         </>
       ) : null}

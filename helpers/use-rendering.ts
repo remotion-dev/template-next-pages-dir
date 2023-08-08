@@ -102,10 +102,15 @@ export const useRendering = (
     }
   }, [id, inputProps]);
 
+  const undo = useCallback(() => {
+    setState({ status: "init" });
+  }, []);
+
   return useMemo(() => {
     return {
       renderMedia,
       state,
+      undo,
     };
-  }, [renderMedia, state]);
+  }, [renderMedia, state, undo]);
 };

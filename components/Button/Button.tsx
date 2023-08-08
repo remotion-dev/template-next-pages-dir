@@ -10,12 +10,16 @@ const ButtonForward: React.ForwardRefRenderFunction<
     disabled?: boolean;
     children: React.ReactNode;
     loading?: boolean;
+    secondary?: boolean;
   }
-> = ({ onClick, disabled, children, loading }, ref) => {
+> = ({ onClick, disabled, children, loading, secondary }, ref) => {
   return (
     <button
       ref={ref}
-      className={styles.button}
+      className={[
+        styles.button,
+        secondary ? styles.secondarybutton : undefined,
+      ].join(" ")}
       onClick={onClick}
       disabled={disabled}
     >

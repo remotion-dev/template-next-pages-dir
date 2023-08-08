@@ -7,10 +7,6 @@ import { DISK, RAM, REGION, SITE_NAME, TIMEOUT } from "../../../config.mjs";
 import { executeApi } from "../../../helpers/api-response";
 import { RenderRequest } from "../../../types/schema";
 
-export const config = {
-  runtime: "edge",
-};
-
 const render = executeApi<RenderMediaOnLambdaOutput, typeof RenderRequest>(
   RenderRequest,
   async (req, body) => {
