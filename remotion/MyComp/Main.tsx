@@ -13,7 +13,6 @@ import React, { useMemo } from "react";
 import { MultiRadialGradient } from "./RadialGradient";
 import { TextFade } from "./TextFade";
 
-const FONT_FAMILY = fontFamily;
 loadFont();
 
 const container: React.CSSProperties = {

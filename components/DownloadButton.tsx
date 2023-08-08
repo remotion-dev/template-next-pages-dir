@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { State } from "../hooks/useLambda";
+import { State } from "../helpers/use-rendering";
 import { Button } from "./Button/Button";
 import { Spacing } from "./Spacing";
 
