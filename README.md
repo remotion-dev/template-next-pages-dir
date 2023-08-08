@@ -6,6 +6,12 @@ This is a Next.js project for building programmatic video apps, with `@remotion/
 
 ## Getting Started
 
+[Use this template](https://github.com/new?template_name=template-next&template_owner=remotion-dev) or use:
+
+```
+npx create-video --next
+```
+
 1. Copy the `.env.example` file to `.env` and fill in the values.
    Complete the [Lambda setup guide](https://www.remotion.dev/docs/lambda/setup) to get your AWS credentials.
 
