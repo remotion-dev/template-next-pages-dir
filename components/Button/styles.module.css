@@ -12,6 +12,8 @@
     display: inline-flex;
     flex-direction: row;
     align-items: center;
+    appearance: none;
+    font-size: 14px;
 }
 
 .button:hover {

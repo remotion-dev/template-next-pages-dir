@@ -8,6 +8,10 @@ const light: React.CSSProperties = {
   opacity: 0.6,
 };
 
+const link: React.CSSProperties = {
+  textDecoration: "none",
+};
+
 const Megabytes: React.FC<{
   sizeInBytes: number;
 }> = ({ sizeInBytes }) => {
@@ -32,7 +36,7 @@ export const DownloadButton: React.FC<{
   }
 
   return (
-    <Link href={state.url}>
+    <Link style={link} href={state.url}>
       <Button>
         Download video
         <Spacing></Spacing>
