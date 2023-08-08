@@ -15,6 +15,7 @@
     "@remotion/cli": "^4.0.18",
     "@remotion/eslint-config": "^4.0.18",
     "@remotion/google-fonts": "^4.0.18",
+    "@remotion/bundler": "^4.0.18",
     "@remotion/lambda": "^4.0.18",
     "@remotion/paths": "^4.0.18",
     "@remotion/player": "^4.0.18",
