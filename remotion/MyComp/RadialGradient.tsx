@@ -15,9 +15,17 @@ export const RadialGradient: React.FC<{
   );
 };
 
-export const MultiRadialGradient = () => {
+export const MultiRadialGradient: React.FC<{
+  outProgress: number;
+}> = ({ outProgress }) => {
+  const distance = 1 / (1 - outProgress);
+
   return (
-    <AbsoluteFill>
+    <AbsoluteFill
+      style={{
+        transform: `scale(${distance})`,
+      }}
+    >
       <RadialGradient threshold={0.1}></RadialGradient>
       <RadialGradient threshold={0.3}></RadialGradient>
       <RadialGradient threshold={0.5}></RadialGradient>

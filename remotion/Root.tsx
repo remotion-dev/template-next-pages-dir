@@ -2,7 +2,6 @@ import { Composition } from "remotion";
 import { Main } from "./MyComp/Main";
 import { COMP_NAME, defaultMyCompProps } from "../types/constants";
 import { NextLogo } from "./MyComp/NextLogo";
-import { RemotionAnimation } from "./MyComp/RemotionAnimation";
 
 export const Root: React.FC = () => {
   return (
@@ -21,16 +20,11 @@ export const Root: React.FC = () => {
         component={NextLogo}
         durationInFrames={240}
         fps={30}
-        width={1280}
-        height={720}
-      />
-      <Composition
-        id={"RemotionLogo"}
-        component={RemotionAnimation}
-        durationInFrames={240}
-        fps={30}
-        width={1280}
-        height={720}
+        width={140}
+        height={140}
+        defaultProps={{
+          outProgress: 0,
+        }}
       />
     </>
   );
