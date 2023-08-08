@@ -1,6 +1,6 @@
 # Remotion NextJS example
 
-<img src="https://github.com/remotion-dev/template-next/assets/1629785/4ab6b4a4-1db6-4e68-b463-9f26a9aed5c0" />
+<img src="https://github.com/remotion-dev/template-next/assets/1629785/c9c2e5ca-2637-4ec8-8e40-a8feb5740d88" />
 
 This is a Next.js project that is using `@remotion/player` and `@remotion/lambda`. Using TailwindCSS and TypeScript.
 
