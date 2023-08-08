@@ -2,7 +2,7 @@
 <br/>
 <br/>
 
-This is a Next.js project for building programmatic video apps, with `@remotion/player` and `@remotion/lambda` built in.
+This is a Next.js project for building programmatic video apps, with [`@remotion/player`](https://remotion.dev/player) and [`@remotion/lambda`](https://remotion.dev/lambda) built in.
 
 <img src="https://github.com/remotion-dev/template-next/assets/1629785/c9c2e5ca-2637-4ec8-8e40-a8feb5740d88" />
 
@@ -36,9 +36,9 @@ node deploy.mjs
 
 You should run this script after:
 
-1. you changed the video template
-2. you changed `config.mjs`
-3. you upgraded Remotion to a newer version
+- changing the video template
+- changing `config.mjs`
+- upgrading Remotion to a newer version
 
 ## Set up rendering on AWS Lambda
 
