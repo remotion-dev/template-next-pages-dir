@@ -1,5 +1,3 @@
-# Remotion NextJS example
-
 <img src="https://github.com/remotion-dev/template-next/assets/1629785/9092db5f-7c0c-4d38-97c4-5f5a61f5cc098" />
 
 This is a Next.js project for building programmatic video apps, with `@remotion/player` and `@remotion/lambda` built in.
@@ -40,3 +38,19 @@ You should run this script after:
 1. you changed the video template
 2. you changed `config.mjs`
 3. you upgraded Remotion to a newer version
+
+## Docs
+
+Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
+
+## Help
+
+We provide help on our [Discord server](https://remotion.dev/discord).
+
+## Issues
+
+Found an issue with Remotion? [File an issue here](https://remotion.dev/issue).
+
+## License
+
+Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
