@@ -1,6 +1,7 @@
 import { z } from "zod";
 import {
   AbsoluteFill,
+  Sequence,
   spring,
   useCurrentFrame,
   useVideoConfig,
@@ -8,14 +9,18 @@ import {
 import { CompositionProps } from "../../types/constants";
 import { NextLogo } from "./NextLogo";
 import { loadFont, fontFamily } from "@remotion/google-fonts/Inter";
-import React from "react";
+import React, { useMemo } from "react";
 import { MultiRadialGradient } from "./RadialGradient";
+import { TextFade } from "./TextFade";
 
-export const FONT_FAMILY = fontFamily;
+const FONT_FAMILY = fontFamily;
 loadFont();
 
-const logoContainer: React.CSSProperties = {
+const container: React.CSSProperties = {
   backgroundColor: "white",
+};
+
+const logo: React.CSSProperties = {
   justifyContent: "center",
   alignItems: "center",
 };
@@ -24,18 +29,31 @@ export const Main = ({ title }: z.infer<typeof CompositionProps>) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
+  const transitionStart = 2 * fps;
+  const transitionDuration = 1 * fps;
+
   const logoOut = spring({
     fps,
     frame,
     config: {
       damping: 200,
     },
-    delay: 60,
+    durationInFrames: transitionDuration,
+    delay: transitionStart,
   });
 
+  const titleStyle: React.CSSProperties = useMemo(() => {
+    return { fontFamily, fontSize: 70 };
+  }, []);
+
   return (
-    <AbsoluteFill>
-      <AbsoluteFill style={logoContainer}>
+    <AbsoluteFill style={container}>
+      <Sequence from={transitionStart + transitionDuration / 2}>
+        <TextFade>
+          <h1 style={titleStyle}>{title}</h1>
+        </TextFade>
+      </Sequence>
+      <AbsoluteFill style={logo}>
         <NextLogo outProgress={logoOut}></NextLogo>
       </AbsoluteFill>
       <MultiRadialGradient outProgress={logoOut}></MultiRadialGradient>

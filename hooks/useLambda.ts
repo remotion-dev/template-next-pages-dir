@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { getProgress, renderVideo } from "../lambda/api";
 import { CompositionProps } from "../types/constants";
 
@@ -27,10 +27,17 @@ export type State =
       status: "done";
     };
 
-export const useLambda = (
+const wait = async (milliSeconds: number) => {
+  await new Promise<void>((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, milliSeconds);
+  });
+};
+
+export const useRendering = (
   id: string,
-  inputProps: z.infer<typeof CompositionProps>,
-  refreshInterval = 1000
+  inputProps: z.infer<typeof CompositionProps>
 ) => {
   const [state, setState] = useState<State>({
     status: "init",
@@ -41,14 +48,47 @@ export const useLambda = (
       status: "invoking",
     });
     try {
-      const result = await renderVideo({ id, inputProps });
-
+      const { renderId, bucketName } = await renderVideo({ id, inputProps });
       setState({
         status: "rendering",
         progress: 0,
-        renderId: result.renderId,
-        bucketName: result.bucketName,
+        renderId: renderId,
+        bucketName: bucketName,
       });
+
+      while (true) {
+        const result = await getProgress({
+          id: renderId,
+          bucketName: bucketName,
+        });
+        switch (result.type) {
+          case "error": {
+            setState({
+              status: "error",
+              renderId: renderId,
+              error: new Error(result.message),
+            });
+            break;
+          }
+          case "done": {
+            setState({
+              size: result.size,
+              url: result.url,
+              status: "done",
+            });
+            break;
+          }
+          case "progress": {
+            setState({
+              status: "rendering",
+              bucketName: bucketName,
+              progress: result.progress,
+              renderId: renderId,
+            });
+            await wait(1000);
+          }
+        }
+      }
     } catch (err) {
       setState({
         status: "error",
@@ -58,59 +98,10 @@ export const useLambda = (
     }
   }, [id, inputProps]);
 
-  useEffect(() => {
-    if (state.status !== "rendering") {
-      return;
-    }
-    const interval = setInterval(async () => {
-      try {
-        const result = await getProgress({
-          id: state.renderId,
-          bucketName: state.bucketName,
-        });
-        if (result.type === "error") {
-          setState({
-            status: "error",
-            renderId: state.renderId,
-            error: new Error(result.message),
-          });
-          return;
-        }
-        if (result.type === "done") {
-          setState({
-            size: result.size,
-            url: result.url,
-            status: "done",
-          });
-          return;
-        }
-        if (result.type === "progress") {
-          setState({
-            status: "rendering",
-            bucketName: state.bucketName,
-            progress: result.progress,
-            renderId: state.renderId,
-          });
-        }
-      } catch (e) {
-        setState(() => {
-          return {
-            error: e as Error,
-            renderId: state.renderId,
-            status: "error",
-          };
-        });
-      }
-    }, refreshInterval);
-
-    // TODO: If it takes long, then wait
-    return () => {
-      clearInterval(interval);
+  return useMemo(() => {
+    return {
+      renderMedia,
+      state,
     };
-  }, [refreshInterval, state]);
-
-  return {
-    renderMedia,
-    state,
-  };
+  }, [renderMedia, state]);
 };

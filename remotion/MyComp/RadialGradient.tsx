@@ -1,29 +1,31 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
 
-export const RadialGradient: React.FC<{
+const RadialGradient: React.FC<{
   threshold: number;
 }> = ({ threshold }) => {
+  const backgroundImage = `radial-gradient(circle at center, transparent ${
+    threshold * 100
+  }%, #eee ${threshold * 100}%, transparent ${(threshold + 0.2) * 100}%)`;
+
   return (
     <AbsoluteFill
       style={{
-        backgroundImage: `radial-gradient(circle at center, transparent ${
-          threshold * 100
-        }%, #eee ${threshold * 100}%, transparent ${(threshold + 0.2) * 100}%)`,
+        backgroundImage,
       }}
-    ></AbsoluteFill>
+    />
   );
 };
 
 export const MultiRadialGradient: React.FC<{
   outProgress: number;
 }> = ({ outProgress }) => {
-  const distance = 1 / (1 - outProgress);
+  const scale = 1 / (1 - outProgress);
 
   return (
     <AbsoluteFill
       style={{
-        transform: `scale(${distance})`,
+        transform: `scale(${scale})`,
       }}
     >
       <RadialGradient threshold={0.1}></RadialGradient>

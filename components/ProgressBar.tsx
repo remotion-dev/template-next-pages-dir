@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 
-export const RenderProgress: React.FC<{
+export const ProgressBar: React.FC<{
   progress: number;
 }> = ({ progress }) => {
   const style: React.CSSProperties = useMemo(() => {

@@ -21,7 +21,7 @@
 }
 
 .cinematics {
-    box-shadow: 0 0 200px rgba(0, 0, 0, 0.15)
+    box-shadow: 0 0 200px rgba(0, 0, 0, 0.15);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,7 +35,7 @@
 
     }
     .cinematics {
-        box-shadow: 0 0 200px rgba(255, 255, 255, 0.15)
+        box-shadow: 0 0 200px rgba(255, 255, 255, 0.15);
     }
 }
 

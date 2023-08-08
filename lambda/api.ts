@@ -8,7 +8,7 @@ import {
 import { CompositionProps } from "../types/constants";
 import { ApiResponse } from "../helpers/api-response";
 
-export const makeRequest = async <Res>(
+const makeRequest = async <Res>(
   endpoint: string,
   body: unknown
 ): Promise<Res> => {

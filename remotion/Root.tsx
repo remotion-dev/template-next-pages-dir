@@ -1,6 +1,13 @@
 import { Composition } from "remotion";
 import { Main } from "./MyComp/Main";
-import { COMP_NAME, defaultMyCompProps } from "../types/constants";
+import {
+  COMP_NAME,
+  defaultMyCompProps,
+  DURATION_IN_FRAMES,
+  VIDEO_FPS,
+  VIDEO_HEIGHT,
+  VIDEO_WIDTH,
+} from "../types/constants";
 import { NextLogo } from "./MyComp/NextLogo";
 
 export const Root: React.FC = () => {
@@ -9,16 +16,16 @@ export const Root: React.FC = () => {
       <Composition
         id={COMP_NAME}
         component={Main}
-        durationInFrames={240}
-        fps={30}
-        width={1280}
-        height={720}
+        durationInFrames={DURATION_IN_FRAMES}
+        fps={VIDEO_FPS}
+        width={VIDEO_WIDTH}
+        height={VIDEO_HEIGHT}
         defaultProps={defaultMyCompProps}
       />
       <Composition
-        id={"NextLogo"}
+        id="NextLogo"
         component={NextLogo}
-        durationInFrames={240}
+        durationInFrames={300}
         fps={30}
         width={140}
         height={140}
