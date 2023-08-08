@@ -1,7 +1,8 @@
-import {Config} from 'remotion';
-import {webpackOverride} from './webpack-override';
+// See all configuration options: https://remotion.dev/docs/config
+// Each option also is available as a CLI flag: https://remotion.dev/docs/cli
 
-Config.Rendering.setImageFormat('jpeg');
-Config.Output.setOverwriteOutput(true);
+// Note: When using the Node.JS APIs, the config file doesn't apply. Instead, pass options directly to the APIs
 
-Config.Bundling.overrideWebpackConfig(webpackOverride);
+import { Config } from "@remotion/cli/config";
+
+Config.setVideoImageFormat("jpeg");

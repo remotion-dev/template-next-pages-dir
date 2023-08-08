@@ -1,16 +1,47 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { getRenderProgress, RenderProgress } from '@remotion/lambda'
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { config } from '../../../config'
+import { AwsRegion, getRenderProgress } from "@remotion/lambda";
+import { speculateFunctionName } from "@remotion/lambda/client";
+import { DISK, RAM, REGION, TIMEOUT } from "../../../config.mjs";
+import { executeApi } from "../../../helpers/api-response";
+import { ProgressRequest, ProgressResponse } from "../../../types/schema";
 
-export default async function progress(
-  req: NextApiRequest,
-  res: NextApiResponse<RenderProgress>
-) {
-  if (req.method !== 'GET') return res.status(405).end()
-  const result = await getRenderProgress({
-    ...config,
-    renderId: req.query.id as string,
-  })
-  res.status(200).json(result)
-}
+const progress = executeApi<ProgressResponse, typeof ProgressRequest>(
+  ProgressRequest,
+  async (req, body) => {
+    if (req.method !== "POST") {
+      throw new Error("Only POST requests are allowed");
+    }
+
+    const renderProgress = await getRenderProgress({
+      bucketName: body.bucketName,
+      functionName: speculateFunctionName({
+        diskSizeInMb: DISK,
+        memorySizeInMb: RAM,
+        timeoutInSeconds: TIMEOUT,
+      }),
+      region: REGION as AwsRegion,
+      renderId: body.id,
+    });
+
+    if (renderProgress.fatalErrorEncountered) {
+      return {
+        type: "error",
+        message: renderProgress.errors[0].message,
+      };
+    }
+
+    if (renderProgress.done) {
+      return {
+        type: "done",
+        url: renderProgress.outputFile as string,
+        size: renderProgress.outputSizeInBytes as number,
+      };
+    }
+
+    return {
+      type: "progress",
+      progress: renderProgress.overallProgress,
+    };
+  }
+);
+
+export default progress;
