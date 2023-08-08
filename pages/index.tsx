@@ -48,8 +48,8 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>Remotion Next App</title>
-        <meta name="description" content="A Remotion Next app" />
+        <title>Remotion X Next.js</title>
+        <meta name="description" content="Remotion X Next.js" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div style={container}>

@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "preview": "remotion preview",
-    "render": "remotion render"
+    "studio": "remotion studio",
+    "render": "remotion render",
+    "deploy": "node deploy.mjs"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.18",

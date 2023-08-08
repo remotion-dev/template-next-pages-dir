@@ -2,27 +2,35 @@
 
 ### [EXAMPLE](https://remotion-next-example.vercel.app/)
 
-This is a NextJs project that is using `@remotion/player` and `@remotion/lambda`. Using tailwindcss and typescript.
+This is a Next.js project that is using `@remotion/player` and `@remotion/lambda`. Using TailwindCSS and TypeScript.
 
 ## Getting Started
 
-Copy the `.env.example` file to `.env` and fill in the values, you can get these values by following the [lambda setup guide](https://www.remotion.dev/docs/lambda/setup)
+Copy the `.env.example` file to `.env` and fill in the values.
+Complete the [Lambda setup guide](https://www.remotion.dev/docs/lambda/setup) to get your AWS credentials.
 
 Change the lambda site name in `package.json` `scripts.lambda:site` to your site name
 
 ## Scripts
 
-`yarn dev` - Starts the NextJs dev server
+`npm run dev` - Starts the Next.js dev server
 
-`yarn build` - Builds the NextJs app
+`npm run build` - Builds the Next.js app
 
-`yarn start` - Starts the NextJs app
+`npm run start` - Starts the Next.js app
 
-`yarn preview` - Opens Remotion preview 
+`npm run studio` - Opens the Remotion Studio
 
-` yarn render <YOUR COMPOSITION>` - Renders a composition
+## Update AWS stack
 
-`yarn lambda:site` - Deploys new site to AWS (you have to do that every time you change the Root file or composition)
+The following script will set up your Remotion Bundle and Lambda function on AWS:
 
-`yarn lambda:function` - Deploys new lambda function to AWS (you will need to update your env file with new function name)
+```
+node deploy.mjs
+```
 
+You should run this script after:
+
+1. you changed the video template
+2. you changed `config.mjs`
+3. you upgraded Remotion to a newer version
