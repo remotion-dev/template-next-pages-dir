@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "studio": "remotion studio",
+    "remotion": "remotion studio",
     "render": "remotion render",
     "deploy": "node deploy.mjs"
   },
