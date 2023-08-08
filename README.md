@@ -2,9 +2,7 @@
 <br/>
 <br/>
 
-This is a Next.js project for building programmatic video apps, with [`@remotion/player`](https://remotion.dev/player) and [`@remotion/lambda`](https://remotion.dev/lambda) built in.
-
-<img src="https://github.com/remotion-dev/template-next/assets/1629785/c9c2e5ca-2637-4ec8-8e40-a8feb5740d88" />
+This is a NextJs project that is using `@remotion/player` and `@remotion/lambda`. Using tailwindcss and typescript.
 
 ## Getting Started
 
