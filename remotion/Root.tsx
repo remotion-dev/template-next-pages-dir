@@ -10,7 +10,7 @@ import {
 } from "../types/constants";
 import { NextLogo } from "./MyComp/NextLogo";
 
-export const Root: React.FC = () => {
+export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Composition
