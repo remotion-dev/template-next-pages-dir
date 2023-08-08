@@ -1,16 +1,24 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { Spacing } from "../Spacing";
 import { Spinner } from "../Spinner/Spinner";
 import styles from "./styles.module.css";
 
-export const Button: React.FC<{
-  onClick?: () => void;
-  disabled?: boolean;
-  children: React.ReactNode;
-  loading?: boolean;
-}> = ({ onClick, disabled, children, loading }) => {
+const ButtonForward: React.ForwardRefRenderFunction<
+  HTMLButtonElement,
+  {
+    onClick?: () => void;
+    disabled?: boolean;
+    children: React.ReactNode;
+    loading?: boolean;
+  }
+> = ({ onClick, disabled, children, loading }, ref) => {
   return (
-    <button className={styles.button} onClick={onClick} disabled={disabled}>
+    <button
+      ref={ref}
+      className={styles.button}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {loading && (
         <>
           <Spinner size={20}></Spinner>
@@ -21,3 +29,5 @@ export const Button: React.FC<{
     </button>
   );
 };
+
+export const Button = forwardRef(ButtonForward);
