@@ -56,7 +56,9 @@ export const useRendering = (
         bucketName: bucketName,
       });
 
-      while (true) {
+      let pending = true;
+
+      while (pending) {
         const result = await getProgress({
           id: renderId,
           bucketName: bucketName,
@@ -68,6 +70,7 @@ export const useRendering = (
               renderId: renderId,
               error: new Error(result.message),
             });
+            pending = false;
             break;
           }
           case "done": {
@@ -76,6 +79,7 @@ export const useRendering = (
               url: result.url,
               status: "done",
             });
+            pending = false;
             break;
           }
           case "progress": {
