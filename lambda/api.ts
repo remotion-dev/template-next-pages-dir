@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { RenderMediaOnLambdaOutput } from "@remotion/lambda";
+import type { RenderMediaOnLambdaOutput } from "@remotion/lambda/client";
 import {
   ProgressRequest,
   ProgressResponse,
