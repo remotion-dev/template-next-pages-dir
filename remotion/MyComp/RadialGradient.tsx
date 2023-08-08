@@ -4,9 +4,11 @@ import { AbsoluteFill } from "remotion";
 const RadialGradient: React.FC<{
   threshold: number;
 }> = ({ threshold }) => {
-  const backgroundImage = `radial-gradient(circle at center, transparent ${
+  const backgroundImage = `radial-gradient(circle at center, rgba(255, 255, 255, 0) ${
     threshold * 100
-  }%, #eee ${threshold * 100}%, transparent ${(threshold + 0.2) * 100}%)`;
+  }%, #eee ${threshold * 100}%, rgba(255, 255, 255, 0) ${
+    (threshold + 0.2) * 100
+  }%)`;
 
   return (
     <AbsoluteFill
