@@ -9,7 +9,9 @@ This is a Next.js project that is using `@remotion/player` and `@remotion/lambda
 Copy the `.env.example` file to `.env` and fill in the values.
 Complete the [Lambda setup guide](https://www.remotion.dev/docs/lambda/setup) to get your AWS credentials.
 
-Change the lambda site name in `package.json` `scripts.lambda:site` to your site name
+Edit the `config.mjs` file to your desired Lambda settings.
+
+Run `node deploy.mjs` to deploy your Lambda function and Remotion Bundle.
 
 ## Commands
 
