@@ -34,7 +34,7 @@ export const Spinner: React.FC<{
             style={{
               rotate: `${(index * Math.PI * 2) / lines}rad`,
               transformOrigin: "center center",
-              animationDelay: `${index * 0.1}s`,
+              animationDelay: `${index * 0.1 - lines * 0.1}s`,
             }}
             key={index}
             d={translated}

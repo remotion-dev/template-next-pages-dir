@@ -14,6 +14,8 @@
     --geist-font: "Inter";
 
     --geist-error: #e00;
+
+    --subtitle: #666;
 }
 
 * {
@@ -32,6 +34,7 @@
         --foreground: #fff;
         --button-disabled-color: #111;
         --geist-error: red;
+        --subtitle: #8D8D8D
 
     }
     .cinematics {

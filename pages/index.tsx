@@ -13,6 +13,8 @@ import {
 } from "../types/constants";
 import { z } from "zod";
 import { RenderControls } from "../components/RenderControls";
+import { Tips } from "../components/Tips/Tips";
+import { Spacing } from "../components/Spacing";
 
 const container: React.CSSProperties = {
   maxWidth: 768,
@@ -72,6 +74,11 @@ const Home: NextPage = () => {
           setText={setText}
           inputProps={inputProps}
         ></RenderControls>
+        <Spacing></Spacing>
+        <Spacing></Spacing>
+        <Spacing></Spacing>
+        <Spacing></Spacing>
+        <Tips></Tips>
       </div>
     </div>
   );
