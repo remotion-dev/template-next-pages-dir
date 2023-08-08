@@ -35,21 +35,28 @@ if (
 
 process.stdout.write("Deploying Lambda function... ");
 
-const { alreadyExisted, functionName } = await deployFunction({
-  createCloudWatchLogGroup: true,
-  memorySizeInMb: RAM,
-  region: REGION,
-  timeoutInSeconds: TIMEOUT,
-  architecture: "arm64",
-});
-console.log(functionName, alreadyExisted ? "(already existed)" : "(created)");
+const { functionName, alreadyExisted: functionAlreadyExisted } =
+  await deployFunction({
+    createCloudWatchLogGroup: true,
+    memorySizeInMb: RAM,
+    region: REGION,
+    timeoutInSeconds: TIMEOUT,
+    architecture: "arm64",
+  });
+console.log(
+  functionName,
+  functionAlreadyExisted ? "(already existed)" : "(created)"
+);
 
-// TODO: Report if already existed: https://github.com/remotion-dev/remotion/pull/1936
 process.stdout.write("Ensuring bucket... ");
-const { bucketName } = await getOrCreateBucket({
-  region: REGION,
-});
-console.log(bucketName);
+const { bucketName, alreadyExisted: bucketAlreadyExisted } =
+  await getOrCreateBucket({
+    region: REGION,
+  });
+console.log(
+  bucketName,
+  bucketAlreadyExisted ? "(already existed)" : "(created)"
+);
 
 process.stdout.write("Deploying site... ");
 const { siteName } = await deploySite({
@@ -65,4 +72,5 @@ console.log();
 console.log("You now have everything you need to render videos!");
 console.log("Re-run this command when:");
 console.log("  1) you changed the video template");
-console.log("  2) you upgraded Remotion to a newer version");
+console.log("  2) you changed config.mjs");
+console.log("  3) you upgraded Remotion to a newer version");
