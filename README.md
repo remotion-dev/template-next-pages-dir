@@ -4,6 +4,8 @@
 
 This is a Next.js template for building programmatic video apps, with [`@remotion/player`](https://remotion.dev/player) and [`@remotion/lambda`](https://remotion.dev/lambda) built in.
 
+This template uses the Next.js Pages directory. There is a [App directory version](https://github.com/remotion-dev/template-next-app-dir) of this template available.
+
 <img src="https://github.com/remotion-dev/template-next/assets/1629785/c9c2e5ca-2637-4ec8-8e40-a8feb5740d88" />
 
 ## Getting Started
