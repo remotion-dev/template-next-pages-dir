@@ -8,7 +8,6 @@
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
     padding: 10px;
-    flex: 1;
 }
 
 .icon {

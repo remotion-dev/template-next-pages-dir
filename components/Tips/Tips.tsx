@@ -17,6 +17,7 @@ const titlestyle: React.CSSProperties = {
 const a: React.CSSProperties = {
   textDecoration: "none",
   color: "inherit",
+  flex: 1,
 };
 
 const Tip: React.FC<{
@@ -49,7 +50,7 @@ export const Tips: React.FC = () => {
       <Tip
         href="https://www.remotion.dev/docs/the-fundamentals"
         title="Learn Remotion"
-        description="Learn how to customize this written in React."
+        description="Learn how to customize this video written in React."
       ></Tip>
       <Tip
         href="https://github.com/remotion-dev/template-next"
