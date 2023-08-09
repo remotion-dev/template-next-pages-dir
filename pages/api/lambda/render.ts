@@ -1,4 +1,4 @@
-import { AwsRegion, RenderMediaOnLambdaOutput } from "@remotion/lambda";
+import { AwsRegion, RenderMediaOnLambdaOutput } from "@remotion/lambda/client";
 import {
   renderMediaOnLambda,
   speculateFunctionName,
@@ -6,6 +6,10 @@ import {
 import { DISK, RAM, REGION, SITE_NAME, TIMEOUT } from "../../../config.mjs";
 import { executeApi } from "../../../helpers/api-response";
 import { RenderRequest } from "../../../types/schema";
+
+export const config = {
+  runtime: "edge",
+};
 
 const render = executeApi<RenderMediaOnLambdaOutput, typeof RenderRequest>(
   RenderRequest,
