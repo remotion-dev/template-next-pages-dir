@@ -10,10 +10,16 @@ This template uses the Next.js Pages directory. There is a [App directory versio
 
 ## Getting Started
 
-[Use this template](https://github.com/new?template_name=template-next&template_owner=remotion-dev) or type into your terminal:
+[Use this template](https://github.com/new?template_name=template-next-pages-dir&template_owner=remotion-dev) to clone it into your GitHub account. Run
 
 ```
-npx create-video --next
+npm i
+```
+
+afterwards. Alternatively, use this command to scaffold a project:
+
+```
+npx create-video@latest --next-pages-dir
 ```
 
 ## Commands
