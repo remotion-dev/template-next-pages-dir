@@ -29,7 +29,7 @@
     "dotenv": "^16.0.3",
     "@remotion/eslint-config": "^4.0.77",
     "@types/node": "18.7.23",
-    "@types/react": "18.2.45",
+    "@types/react": "18.2.47",
     "@types/react-dom": "18.2.18",
     "@types/web": "^0.0.61",
     "eslint": "^8.43.0",
