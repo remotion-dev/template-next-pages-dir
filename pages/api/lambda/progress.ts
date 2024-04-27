@@ -44,7 +44,7 @@ const progress = executeApi<ProgressResponse, typeof ProgressRequest>(
       type: "progress",
       progress: Math.max(0.03, renderProgress.overallProgress),
     };
-  }
+  },
 );
 
 export default progress;

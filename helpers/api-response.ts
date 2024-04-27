@@ -17,8 +17,8 @@ export const executeApi =
     handler: (
       req: NextApiRequest,
       body: z.infer<Req>,
-      res: NextApiResponse<ApiResponse<Res>>
-    ) => Promise<Res>
+      res: NextApiResponse<ApiResponse<Res>>,
+    ) => Promise<Res>,
   ) =>
   async (req: NextApiRequest, res: NextApiResponse<ApiResponse<Res>>) => {
     try {
