@@ -22,7 +22,6 @@ const RadialGradient: React.FC<{
           borderRadius: "50%",
           backgroundColor: color,
           position: "absolute",
-          // eslint-disable-next-line @remotion/slow-css-property
           boxShadow: "0 0 100px rgba(0, 0, 0, 0.05)",
         }}
       ></div>
